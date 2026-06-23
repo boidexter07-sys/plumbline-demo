@@ -28,6 +28,12 @@
   }
 
   /* --- 2) Clerk modal trigger ---------------------------------------- */
+  // Absolute constant path to the static HTML state that renders the auth modal.
+  // v1.0 ships a static preview; Phase 4 swaps in real Clerk. The constant is
+  // an absolute path under the project subdomain so it resolves correctly on
+  // GitHub Pages (where root-relative paths would 404 to the host root).
+  var AUTH_MODAL_URL = '/plumbline-demo/states/landing-clerk-modal.html';
+
   function setupAuthModal() {
     var trigger = document.querySelectorAll('[data-open-auth]');
     if (!trigger.length) return;
@@ -36,9 +42,8 @@
       el.addEventListener('click', function (e) {
         e.preventDefault();
         // Static HTML state for v1.0 marketing — Phase 4 swaps in real Clerk.
-        var url = new URL(window.location.href);
-        url.searchParams.set('auth', 'open');
-        window.location.href = url.pathname.replace(/\/?$/, '/states/landing-clerk-modal.html') + '?' + url.searchParams.toString();
+        var params = window.location.search ? window.location.search : '';
+        window.location.href = AUTH_MODAL_URL + params;
       });
     });
   }
@@ -88,7 +93,9 @@
         if (state.type !== 'all') {
           visible = visible && factorType === state.type;
         }
-        factor.classList.toggle('dimmed', !visible);
+        // Use a class toggle for filter visibility. The matching CSS rule
+        // (.pulse-legend .factor.is-filtered-out) hides the element entirely.
+        factor.classList.toggle('is-filtered-out', !visible);
       });
 
       // Sync URL (replaceState, no scroll jump)

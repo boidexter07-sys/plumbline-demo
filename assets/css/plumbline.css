@@ -377,7 +377,10 @@ section.block.deep h2 .em { color: var(--accent-soft); }
   gap: 32px;
   letter-spacing: -0.015em;
 }
+/* Hide the default disclosure triangle on every browser. The custom +/−
+   indicator is drawn with summary::after below. */
 .faq summary::-webkit-details-marker, .faq-item summary::-webkit-details-marker { display: none; }
+.faq summary::marker, .faq-item summary::marker { content: ''; }
 .faq summary .num, .faq-item summary .num {
   font-size: 12px; font-weight: 700;
   color: var(--accent);
@@ -551,7 +554,7 @@ footer .legal a { color: var(--accent-soft); }
 }
 .pulse-legend .factor:nth-child(4n) { border-right: none; }
 .pulse-legend .factor:nth-last-child(-n+4) { border-bottom: none; }
-.pulse-legend .factor.dimmed { opacity: 0.32; }
+.pulse-legend .factor.is-filtered-out { display: none; }
 .pulse-legend .factor .swatch-row {
   display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 700;

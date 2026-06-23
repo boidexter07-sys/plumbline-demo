@@ -14,7 +14,9 @@
 <meta property="og:title" content="Plumbline — A driver's-seat view of your investments.">
 <meta property="og:description" content="See your investments clearly. Understand what they mean. Calm guidance for the active Canadian investor. $4.99 CAD/mo after a 7-day free trial.">
 <meta property="og:url" content="/">
-<meta property="og:image" content="/assets/img/og-image.png">
+<!-- og:image removed: assets/img/og-image.png does not exist yet. Nova will
+     generate the og-image in a separate dispatch and add the meta tag back
+     to all 6 marketing pages once the asset is live. -->
 <meta property="og:locale" content="en_CA">
 
 <!-- Twitter -->
@@ -32,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="./assets/css/plumbline.css">
+<link rel="stylesheet" href=./plumbline-demo/assets/css/plumbline.cs.>
 
 <!-- Favicon (inline SVG, no extra request) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -74,21 +76,21 @@
 <!-- NAV -->
 <header class="nav-wrap">
   <nav class="nav" aria-label="Primary">
-    <a href="/" class="brand">
+    <a href="/plumbline-demo/" class="brand">
       <span class="brand-mark">
         <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg>
       </span>
       <span>Plumbline</span>
     </a>
     <div class="nav-links">
-      <a href="/pricing/">Pricing</a>
-      <a href="/about/">About</a>
-      <a href="/faq/">FAQ</a>
+      <a href="/plumbline-demo/pricing/">Pricing</a>
+      <a href="/plumbline-demo/about/">About</a>
+      <a href="/plumbline-demo/faq/">FAQ</a>
       <a href="#pulse-explainer">How Pulse works</a>
     </div>
     <span class="nav-spacer"></span>
     <div class="nav-cta">
-      <a href="/pricing/" class="btn btn-primary">Get started <span class="arrow">→</span></a>
+      <a href="/plumbline-demo/pricing/" class="btn btn-primary">Get started <span class="arrow">→</span></a>
     </div>
     <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -107,7 +109,7 @@
         See your investments clearly. Understand what they mean. Plumbline is calm guidance for the active Canadian investor who already has a brokerage — Questrade, Wealthsimple, one of the big-five direct-investing arms — has read the Globe and Mail's business section or the Financial Post, and would rather read their own book than be told what to do with it.
       </p>
       <div class="hero-cta">
-        <a href="/pricing/" class="btn btn-primary">Start 7-day free trial <span class="arrow">→</span></a>
+        <a href="/plumbline-demo/pricing/" class="btn btn-primary">Start 7-day free trial <span class="arrow">→</span></a>
         <a href="#pulse-explainer" class="btn btn-ghost">How Pulse works</a>
       </div>
       <div class="hero-byline">
@@ -340,7 +342,7 @@
       </div>
 
       <p class="legend-foot">
-        <strong>On glyphs and colour.</strong> Every factor gets a distinct colour and a distinct glyph shape, so the legend reads under colour-blindness. The 12-factor palette is separate from the 5-band palette — the colours above identify <em>which</em> factor; the Quiet / Light / Active / Strong / Intense bands identify <em>how much</em> attention. The full specification lives in <a href="/pulse-legend-spec.md" style="color: var(--accent); border-bottom: 1px solid var(--accent);">pulse-legend-spec.md</a>.
+        <strong>On glyphs and colour.</strong> Every factor gets a distinct colour and a distinct glyph shape, so the legend reads under colour-blindness. The 12-factor palette is separate from the 5-band palette — the colours above identify <em>which</em> factor; the Quiet / Light / Active / Strong / Intense bands identify <em>how much</em> attention. The full specification lives in <a href="/plumbline-demo/pulse-legend-spec.md" style="color: var(--accent); border-bottom: 1px solid var(--accent);">pulse-legend-spec.md</a>.
       </p>
     </div>
 
@@ -472,27 +474,27 @@
       <ul>
         <li><a href="#pulse-explainer">How Pulse works</a></li>
         <li><a href="#three-layer-disclosure">The three layers</a></li>
-        <li><a href="/pricing/">Pricing</a></li>
-        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/plumbline-demo/pricing/">Pricing</a></li>
+        <li><a href="/plumbline-demo/faq/">FAQ</a></li>
       </ul>
     </div>
     <div>
       <h4>Company</h4>
       <ul>
-        <li><a href="/about/">About</a></li>
+        <li><a href="/plumbline-demo/about/">About</a></li>
         <li><a href="mailto:hello@plumbline.app">Contact</a></li>
       </ul>
     </div>
     <div>
       <h4>Legal</h4>
       <ul>
-        <li><a href="/terms/">Terms</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/plumbline-demo/terms/">Terms</a></li>
+        <li><a href="/plumbline-demo/privacy/">Privacy</a></li>
       </ul>
     </div>
   </div>
   <div class="legal">
-    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only. <a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a>.</p>
+    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only. <a href="/plumbline-demo/terms/">Terms</a> · <a href="/plumbline-demo/privacy/">Privacy</a>.</p>
     <a href="#">Back to top ↑</a>
   </div>
 </footer>
@@ -501,7 +503,7 @@
 <div class="scrim" data-nav-scrim hidden style="position: fixed; inset: 0; z-index: 99; background: rgba(27,26,23,0.42);"></div>
 <aside id="mobile-drawer" data-nav-drawer aria-hidden="true" hidden style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-base); border-bottom: 2px solid var(--text-primary); padding: 18px 20px 28px; box-shadow: 0 12px 32px rgba(15,14,12,0.18);">
   <div style="display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 8px;">
-    <a href="/" class="brand" style="font-size: 18px;">
+    <a href="/plumbline-demo/" class="brand" style="font-size: 18px;">
       <span class="brand-mark" style="width: 20px; height: 20px;"><svg viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
       <span>Plumbline</span>
     </a>
@@ -510,9 +512,9 @@
     </button>
   </div>
   <nav aria-label="Mobile" style="display: flex; flex-direction: column; border-top: 1px solid var(--border-rule); margin-top: 8px;">
-    <a href="/pricing/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Pricing<span style="color: var(--accent);">→</span></a>
-    <a href="/about/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">About<span style="color: var(--accent);">→</span></a>
-    <a href="/faq/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">FAQ<span style="color: var(--accent);">→</span></a>
+    <a href="/plumbline-demo/pricing/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Pricing<span style="color: var(--accent);">→</span></a>
+    <a href="/plumbline-demo/about/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">About<span style="color: var(--accent);">→</span></a>
+    <a href="/plumbline-demo/faq/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">FAQ<span style="color: var(--accent);">→</span></a>
     <a href="#pulse-explainer" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary);">How Pulse works<span style="color: var(--accent);">→</span></a>
   </nav>
   <div style="margin-top: 20px;">
@@ -521,6 +523,6 @@
   </div>
 </aside>
 
-<script src="./assets/js/plumbline.js"></script>
+<script src=./plumbline-demo/assets/js/plumbline.j.></script>
 </body>
 </html>
