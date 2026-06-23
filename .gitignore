@@ -1,0 +1,14 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.log
+
+# Local server artifacts
+*.pid
+
+# Tooling (not in build, but kept clean)
+node_modules/

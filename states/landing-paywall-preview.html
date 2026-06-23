@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — Plumbline</title>
+<meta name="description" content="Pulse is part of Plumbline. Start your 7-day trial to continue.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  /* Paywall state — dashboard dimmed behind, paywall modal centred */
+  body { min-height: 100vh; }
+  .nav-cta .label { font-size: 13.5px; color: var(--text-secondary); }
+  .nav-cta .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--text-primary); color: var(--bg-base); display: grid; place-items: center; font-weight: 700; font-size: 13px; opacity: 0.85; }
+  .nav-links a { opacity: 0.55; }
+  .nav-links a:hover { opacity: 1; }
+
+  .dash-behind { filter: blur(2px); opacity: 0.5; pointer-events: none; }
+  .dashboard { padding: 40px 28px; border-bottom: 1px solid var(--border-rule); }
+  .dash-inner { max-width: var(--container); margin: 0 auto; }
+  .dash-head { padding-bottom: 20px; border-bottom: 2px solid var(--text-primary); display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+  .dash-head .title { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+  .dash-head .crumbs { font-size: 12.5px; color: var(--text-secondary); display: flex; gap: 14px; align-items: center; }
+  .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--border-rule); background: var(--bg-surface); }
+  .tile-behind { padding: 32px; min-height: 200px; border-right: 1px solid var(--border-rule); border-bottom: 1px solid var(--border-rule); display: flex; flex-direction: column; gap: 12px; }
+  .tile-behind.featured { grid-column: 1 / -1; background: var(--text-primary); color: var(--text-on-deep); padding: 44px; }
+  .tile-behind .name { font-weight: 700; font-size: 1.1rem; }
+  .tile-behind.featured .name { font-size: 1.25rem; }
+  .tile-behind .desc { font-size: 13.5px; color: var(--text-secondary); }
+  .tile-behind.featured .desc { color: var(--text-on-deep-dim); }
+
+  .paywall-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(27, 26, 23, 0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 32px 20px; animation: fadeIn .18s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cardIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .paywall-card {
+    background: var(--bg-base);
+    border: 1px solid var(--border-strong);
+    width: 100%; max-width: 520px;
+    box-shadow: 0 24px 64px rgba(15, 14, 12, 0.28);
+    animation: cardIn .22s ease;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    position: relative;
+  }
+  .paywall-card .close { position: absolute; top: 14px; right: 14px; background: transparent; border: none; width: 36px; height: 36px; display: grid; place-items: center; color: var(--text-secondary); border-radius: 4px; cursor: pointer; }
+  .paywall-card .close:hover { background: var(--bg-muted); color: var(--text-primary); }
+
+  .paywall-tile {
+    background: var(--bg-muted);
+    padding: 36px 40px 32px;
+    border-bottom: 1px solid var(--border-rule);
+    position: relative;
+  }
+  .paywall-tile .ico { width: 32px; height: 32px; color: var(--accent); margin-bottom: 14px; }
+  .paywall-tile .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 8px; }
+  .paywall-tile h2 { font-size: 1.55rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 8px; max-width: 22ch; }
+  .paywall-tile h2 .em { color: var(--accent); font-style: italic; font-weight: 600; }
+  .paywall-tile .num-line { display: flex; align-items: baseline; gap: 10px; margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--border-rule); }
+  .paywall-tile .num-line .score { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; color: var(--text-primary); font-variant-numeric: tabular-nums; line-height: 1; }
+  .paywall-tile .num-line .band { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); }
+  .paywall-tile .num-line .locked { margin-left: auto; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+  .paywall-tile .num-line .locked svg { width: 12px; height: 12px; }
+
+  .paywall-body { padding: 32px 40px 36px; }
+  .paywall-body .lede { font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 12px; max-width: 44ch; }
+  .paywall-body .lede strong { color: var(--text-primary); font-weight: 600; }
+  .paywall-body .what-list { list-style: none; padding: 0; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border-rule); padding-top: 22px; }
+  .paywall-body .what-list li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 13.5px; color: var(--text-primary); line-height: 1.45; align-items: baseline; }
+  .paywall-body .what-list li .bullet { color: var(--accent); font-weight: 700; }
+
+  .paywall-cta { display: flex; flex-direction: column; gap: 10px; }
+  .paywall-cta .btn-primary { justify-content: center; padding: 16px 20px; font-size: 15px; }
+  .paywall-cta .small { font-size: 12px; color: var(--text-secondary); text-align: center; line-height: 1.5; }
+
+  @media (max-width: 980px) {
+    .dash-grid { grid-template-columns: 1fr; }
+    .tile-behind { border-right: none; }
+  }
+  @media (max-width: 640px) {
+    .paywall-tile { padding: 28px 24px 24px; }
+    .paywall-body { padding: 24px 24px 28px; }
+    .nav-links, .nav-cta .label { display: none; }
+    .dash-head .crumbs { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dash-behind">
+  <div class="ribbon">
+    <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+    <span class="right"><a href="/">Plumbline now covers the full S&amp;P 500 →</a></span>
+  </div>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
+        <span>Plumbline</span>
+      </a>
+      <div class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="/#pulse-explainer">How Pulse works</a>
+        <a href="#">Settings</a>
+      </div>
+      <span class="nav-spacer"></span>
+      <div class="nav-cta">
+        <span class="label">taha@plumbline.example</span>
+        <div class="avatar">T</div>
+      </div>
+    </nav>
+  </header>
+  <section class="dashboard">
+    <div class="dash-inner">
+      <div class="dash-head">
+        <div class="title">Plumbline · Pulse preview</div>
+        <div class="crumbs">SHLD 1.0 · Full Pulse experience · Tue · 09:42 ET</div>
+      </div>
+      <div class="dash-grid">
+        <div class="tile-behind featured">
+          <div class="name">Pulse — NVIDIA Corp</div>
+          <div class="desc">A 12-factor score, in five bands, on the conditions around NVDA today. Tap any score to see the factors that pushed it up or pulled it down.</div>
+        </div>
+        <div class="tile-behind">
+          <div class="name">My Holdings</div>
+          <div class="desc">Your real portfolio, kept private to you.</div>
+        </div>
+        <div class="tile-behind">
+          <div class="name">Daily Brief</div>
+          <div class="desc">A short written read each morning on what the world did and what it touched in your book.</div>
+        </div>
+        <div class="tile-behind">
+          <div class="name">Markets Now</div>
+          <div class="desc">The headlines that matter, without the hysteria that surrounds them.</div>
+        </div>
+        <div class="tile-behind">
+          <div class="name">My Sandbox</div>
+          <div class="desc">Three private paper portfolios for rehearsing decisions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="paywall-overlay">
+  <div class="paywall-card" role="dialog" aria-modal="true" aria-labelledby="paywall-title">
+    <button class="close" aria-label="Close" onclick="window.location.href='/'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <div class="paywall-tile">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+      <div class="label">Pulse · NVDA</div>
+      <h2 id="paywall-title">Pulse is part of <span class="em">Plumbline.</span></h2>
+      <div class="num-line">
+        <span class="score">—</span>
+        <span class="band">Locked</span>
+        <span class="locked">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          Detail view
+        </span>
+      </div>
+    </div>
+
+    <div class="paywall-body">
+      <p class="lede">The full Pulse experience — the 12 factors, the five bands, the per-position drill-down, the history over time — lives inside Plumbline, alongside the rest of the dashboard. To continue past this point, your 7-day free trial needs to be started.</p>
+      <p class="lede" style="font-size: 13px; color: var(--text-secondary); margin-top: 16px; font-style: italic; max-width: 48ch;">The trial is the full product, with no feature gating and no premium tier hidden anywhere in the product. Every dashboard tile is open. Every asset class is covered. No payment information is collected before the seventh day, and you will not be charged until day eight. If you cancel before the trial ends, you will not be charged at all. The trial exists because Plumbline is the kind of product that needs a few days to settle in, and the most honest way to offer that settling-in is to offer it for free.</p>
+      <p class="lede" style="font-size: 14px; color: var(--text-primary); margin-top: 16px; max-width: 48ch;">At the end of the trial, the subscription is <strong>$4.99 CAD per month</strong>, billed monthly in Canadian dollars through Stripe. You can cancel any time before the next billing date from the account settings page.</p>
+      <ul class="what-list">
+        <li><span class="bullet">i.</span><span>The full Pulse score and band, updated through the week.</span></li>
+        <li><span class="bullet">ii.</span><span>The twelve factors that pushed the score up or down, in the real term and a one-line definition the first time.</span></li>
+        <li><span class="bullet">iii.</span><span>A plain-language explanation of what each factor measures.</span></li>
+        <li><span class="bullet">iv.</span><span>The My Holdings, Daily Brief, Markets Now, My Sandbox, and Leaderboard tiles.</span></li>
+      </ul>
+      <div class="paywall-cta">
+        <a href="#" class="btn btn-primary">Start your 7-day trial <span class="arrow">→</span></a>
+        <div class="small">$4.99 CAD a month after the trial. Cancel anytime from Settings — two clicks, no friction.<br>Payment handled by Stripe in CAD. <em>Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.</em></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

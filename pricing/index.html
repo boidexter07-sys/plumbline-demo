@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing — Plumbline</title>
+<meta name="description" content="One price. One promise. Plumbline is $4.99 CAD/month after a 7-day free trial. Cancel anytime.">
+<link rel="canonical" href="/pricing/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plumbline">
+<meta property="og:title" content="Pricing — Plumbline">
+<meta property="og:description" content="$4.99 CAD/month after a 7-day free trial. One price, one promise, no annual discount, no upsell ladder.">
+<meta property="og:url" content="/pricing/">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing — Plumbline">
+<meta name="twitter:description" content="$4.99 CAD/month after a 7-day free trial.">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  /* Pricing-specific page overrides */
+  .page-hero { padding: 100px 28px 40px; border-bottom: 1px solid var(--border-rule); }
+  .page-hero-inner { max-width: var(--container); margin: 0 auto; text-align: center; }
+  .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 22px; }
+  .page-hero h1 .em { color: var(--accent); font-style: italic; font-weight: 700; }
+  .page-hero .lede { margin: 0 auto; }
+
+  .price-section-pg { padding: 80px 28px 120px; }
+  .price-card-wide {
+    margin: 0 auto; max-width: 620px;
+    background: var(--bg-surface);
+    border: 1px solid var(--text-primary);
+    padding: 56px 52px;
+    position: relative;
+  }
+  .not-list { margin-top: 64px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .not-list .heading { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--border-rule); }
+  .not-row { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 22px 0; border-bottom: var(--rule); }
+  .not-row .what { font-weight: 600; font-size: 14.5px; color: var(--text-primary); }
+  .not-row .why { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); }
+  .not-row .why em { color: var(--accent); font-style: italic; font-weight: 500; }
+
+  .compare-band { background: var(--bg-deep); color: var(--text-on-deep); padding: 120px 28px; }
+  .compare-band .eyebrow { color: var(--accent-soft); }
+  .compare-band .eyebrow .num { color: var(--text-on-deep); }
+  .compare-band h2 { color: var(--text-on-deep); max-width: 26ch; }
+  .compare-band h2 .em { color: var(--accent-soft); }
+  .compare-band .lede { color: var(--text-on-deep-dim); }
+  .compare-grid { margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border-on-deep); }
+  .compare-col { padding: 40px 32px 8px; border-right: 1px solid var(--border-on-deep); }
+  .compare-col:last-child { border-right: none; }
+  .compare-col .label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 16px; }
+  .compare-col h3 { color: var(--text-on-deep); font-size: 1.18rem; }
+  .compare-col p { color: var(--text-on-deep-dim); font-size: 14.5px; line-height: 1.65; margin: 12px 0 0; }
+
+  @media (max-width: 980px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-col { border-right: none; border-bottom: 1px solid var(--border-on-deep); }
+    .compare-col:last-child { border-bottom: none; }
+    .not-row { grid-template-columns: 1fr; gap: 6px; }
+    .compare-band { padding: 80px 24px; }
+  }
+  @media (max-width: 640px) {
+    .page-hero { padding: 72px 24px 32px; }
+    .price-section-pg { padding: 56px 24px 80px; }
+    .price-card-wide { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+  <span class="right"><a href="/">Plumbline now covers the full S&amp;P 500 →</a></span>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
+      <span>Plumbline</span>
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#pulse-explainer">How Pulse works</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/pricing/" class="active">Pricing</a>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-primary" data-open-auth>Start free trial <span class="arrow">→</span></a>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow" style="justify-content: center;"><span class="num">01</span> · Pricing</div>
+    <h1>One price. <span class="em">One promise.</span></h1>
+    <p class="lede">$4.99 CAD a month, with a 7-day free trial at the front. No annual discount, no upsell ladder, no second tier hiding in the navigation. The subscription earns itself, every month, or you leave.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">02</span> · The price</span>
+    <h2>One price. <span class="em">One promise.</span></h2>
+    <p style="font-size: 1.12rem; line-height: 1.7; color: var(--text-primary); max-width: 60ch; margin: 0 0 22px;">Plumbline is <strong>$4.99 CAD a month</strong>, with a 7-day free trial at the front of it. There is no annual discount, no enterprise tier, no family plan, no API add-on, and no upsell ladder waiting a few weeks in. There is one product, one price, and one promise — that the subscription earns itself, every month, by being worth the cost of a sandwich a week.</p>
+    <p style="font-size: 1.12rem; line-height: 1.7; color: var(--text-primary); max-width: 60ch; margin: 0 0 22px;">A short note on why the price is what it is. $4.99 CAD a month is not a budget choice and it is not a competitive move. Plumbline is not trying to undercut Questrade, where you transact cheaply, because Plumbline is not a brokerage. Plumbline is not trying to be a free alternative to a paid terminal, because Plumbline is not a terminal. The price is a <em>filter</em>. It is the smallest reasonable amount that says: this is a serious subscription, for a serious practice, and you pay it because you read your own book — not because the product is cheap.</p>
+    <p style="font-size: 1.12rem; line-height: 1.7; color: var(--text-primary); max-width: 60ch; margin: 0;">If you are already the kind of investor who has a brokerage — Questrade, Wealthsimple, IBKR Canada, one of the big five direct-investing platforms — reads the Globe and Mail's business section or the Financial Post, and is looking for a way to read your own positions with more discipline and less noise, the price is the smallest part of the test. The test is whether the read earns the subscription. The trial is the read, for seven days, on your real holdings.</p>
+  </div>
+</section>
+
+<section class="price-section-pg">
+  <div class="price-card-wide">
+    <span class="tag">Plumbline · all features</span>
+    <div class="amt"><span class="num">$4.99</span><span class="per">CAD / month</span></div>
+    <p class="trial"><strong>7-day free trial.</strong> The full product, no feature gating. No payment information is collected before the seventh day, and you will not be charged until day eight. If you cancel before the trial ends, you will not be charged at all. Billed in Canadian dollars through Stripe.</p>
+    <p class="trial" style="font-size: 13px; margin-top: 14px; color: var(--text-secondary); font-style: italic;">The full product. During the trial and after it, every dashboard tile is open, every asset class is covered, and every feature is included. There is no feature gating, no premium research walled off behind a higher tier, no second tier hidden in the navigation. What you see on day one is what you see on day three hundred.</p>
+    <div style="margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-rule);">
+      <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); margin-bottom: 16px;">What's inside, one line per tile</div>
+      <ul>
+        <li><span class="bullet">i.</span><span><strong>My Holdings</strong> — your real portfolio, kept private to you, in any account you choose to enter.</span></li>
+        <li><span class="bullet">ii.</span><span><strong>Pulse</strong> — a 12-factor score in five bands, on every position, updated through the week.</span></li>
+        <li><span class="bullet">iii.</span><span><strong>Daily Brief</strong> — a short written read each morning on what the world did and what it touched in your book.</span></li>
+        <li><span class="bullet">iv.</span><span><strong>Markets Now</strong> — the headlines that matter, without the hysteria that surrounds them.</span></li>
+        <li><span class="bullet">v.</span><span><strong>My Sandbox</strong> — three private paper portfolios, where you can rehearse decisions without money at risk.</span></li>
+        <li><span class="bullet">vi.</span><span><strong>Leaderboard</strong> — public sandboxes, ranked by risk-adjusted return, defaulting to a three-month window.</span></li>
+      </ul>
+    </div>
+    <div class="cta">
+      <a href="#" class="btn btn-primary" data-open-auth>Start your 7-day trial <span class="arrow">→</span></a>
+      <div class="small">$4.99 CAD a month after the trial. Payment handled by Stripe in CAD.<br>Cancel anytime from Settings — two clicks, no friction.</div>
+    </div>
+  </div>
+
+  <div class="not-list">
+    <div class="heading">What is not included — yet</div>
+    <div class="not-row">
+      <div class="what">No enterprise tier</div>
+      <div class="why">Plumbline is built for one person with a portfolio, not a desk. There is no team plan, no SSO, no procurement contact.</div>
+    </div>
+    <div class="not-row">
+      <div class="what">No annual discount</div>
+      <div class="why">A discount to lock you in would work against the principle that the subscription should earn itself every month. <em>The price is the price.</em></div>
+    </div>
+    <div class="not-row">
+      <div class="what">No family plan, no student plan</div>
+      <div class="why">A portfolio is personal. Each account is a separate book, kept private to the holder. We'd rather you each have a real account than share one.</div>
+    </div>
+    <div class="not-row">
+      <div class="what">No API access</div>
+      <div class="why">You can export your data to CSV or JSON anytime. A live API for third parties would mean supporting infrastructure the product is not yet built to maintain.</div>
+    </div>
+    <div class="not-row">
+      <div class="what">No trades, ever</div>
+      <div class="why">Plumbline is observation, not execution. The subscription is the only commercial relationship in the room. <em>The product does not earn when you transact, and never will.</em></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare-band">
+  <div class="container">
+    <div class="eyebrow"><span class="num">03</span> · How Plumbline differs</div>
+    <h2>The discipline of a terminal, <span class="em">the readability of a notebook.</span></h2>
+    <p class="lede">Three distinctions, in prose rather than a feature matrix. The audience this product is built for already knows the alternatives; what follows is how Plumbline sits in relation to them.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="label">Vs. a brokerage</div>
+        <h3>Questrade, Wealthsimple, IBKR, the big-five</h3>
+        <p>A Canadian discount brokerage — Questrade, Wealthsimple, IBKR Canada, the big-five direct-investing arms — is the place where you open an account, fund it, and place orders. The product is built around transactions. <strong>Plumbline is not a brokerage.</strong> Plumbline does not hold your money, does not hold your securities, does not custody your assets, and does not place orders on your behalf. The product is built around <em>reading</em> — around giving you a clear picture of the holdings you already have, in whatever account you already keep them, against the conditions around them. If you want to trade, your brokerage is the place. If you want to understand what you are holding, in a frame your brokerage does not give you, Plumbline is the place. The two are not in competition, because they are not doing the same job.</p>
+      </div>
+      <div class="compare-col">
+        <div class="label">Vs. a professional terminal</div>
+        <h3>The trading-floor species of product</h3>
+        <p>A professional terminal — Bloomberg, FactSet, the kind of platform used on a trading floor and priced for the people whose job is finance — is a different species of product. Those tools reward fluency. They assume you already know what an order book is, what a duration number means, what a credit spread looks like when it widens. Plumbline is built on the <em>discipline of a terminal</em> — the rigour of a 12-factor model, the freshness of the data, the habit of reading conditions before acting — and the <em>readability of a notebook</em>. The score, the brief, the factor explanations, the band vocabulary: all of it is designed to give you the rigour of a terminal in a form you can actually read on the train. Plumbline is not a terminal you have to apprentice yourself to. It is a terminal's discipline, with the friction taken out.</p>
+      </div>
+      <div class="compare-col">
+        <div class="label">Vs. a financial media site</div>
+        <h3>Globe, Financial Post, BNN, the rest</h3>
+        <p>A financial media site — the Globe and Mail's business section, the Financial Post, BNN Bloomberg, the Canadian arms of the global news firehoses — gives you news, but the news is not bound to your book. You can read every story the Financial Post publishes and still not know what the day meant for the eight positions you actually hold. Plumbline is bound to your holdings. The Daily Brief, the Pulse score, and the Markets Now tile are all built around the question <em>what does today's news mean for the things I own</em>, not around the question <em>what happened in the news today</em>. The difference is small in the abstract and large in practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <span class="eyebrow" style="margin: 0 auto 24px; display: inline-flex;"><span class="num">04</span> · Start</span>
+  <h2>Seven days, <span class="em">on us.</span></h2>
+  <p>The trial begins the moment you create an account. No payment information is collected before the seventh day, no obligation to continue, and no friction if you choose not to. If you do choose to continue, the subscription is <strong>$4.99 CAD a month</strong>, billed monthly through Stripe in Canadian dollars, and you can cancel at any moment from the account settings page.</p>
+  <a href="#" class="btn btn-primary" data-open-auth>Start your 7-day trial <span class="arrow">→</span></a>
+  <div class="micro" style="margin-top: 28px; max-width: 56ch; margin-left: auto; margin-right: auto; text-transform: none; letter-spacing: 0.01em; font-weight: 400; font-style: italic; line-height: 1.55;">Plumbline is for observation only. Pulse is a measure of market conditions, not a recommendation. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.</div>
+</section>
+
+<footer>
+  <div class="grid">
+    <div class="brand-block">
+      <div class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
+        <span>Plumbline</span>
+      </div>
+      <p>Calm guidance for noisy markets. A driver's-seat view of your investments.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <ul>
+        <li><a href="/#pulse-explainer">How Pulse works</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="mailto:hello@plumbline.app">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only.</p>
+    <a href="#">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="scrim" data-nav-scrim hidden style="position: fixed; inset: 0; z-index: 99; background: rgba(27,26,23,0.42);"></div>
+<aside id="mobile-drawer" data-nav-drawer aria-hidden="true" hidden style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-base); border-bottom: 2px solid var(--text-primary); padding: 18px 20px 28px; box-shadow: 0 12px 32px rgba(15,14,12,0.18);">
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 8px;">
+    <a href="/" class="brand" style="font-size: 18px;"><span class="brand-mark" style="width: 20px; height: 20px;"><svg viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <button data-nav-close aria-label="Close menu" style="background: transparent; border: none; width: 40px; height: 40px; display: grid; place-items: center; color: var(--accent); border-radius: 4px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav aria-label="Mobile" style="display: flex; flex-direction: column; border-top: 1px solid var(--border-rule); margin-top: 8px;">
+    <a href="/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Home<span style="color: var(--accent);">→</span></a>
+    <a href="/about/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">About<span style="color: var(--accent);">→</span></a>
+    <a href="/faq/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">FAQ<span style="color: var(--accent);">→</span></a>
+    <a href="/#pulse-explainer" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary);">How Pulse works<span style="color: var(--accent);">→</span></a>
+  </nav>
+  <div style="margin-top: 20px;">
+    <a href="#" data-open-auth class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px 20px; font-size: 15px;">Get started <span class="arrow">→</span></a>
+    <div style="margin-top: 12px; font-size: 12px; color: var(--text-secondary); text-align: center; font-style: italic;">7-day free trial · then $4.99 CAD/mo</div>
+  </div>
+</aside>
+
+<script src="/assets/js/plumbline.js"></script>
+</body>
+</html>

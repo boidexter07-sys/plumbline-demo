@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Plumbline</title>
+<meta name="description" content="Why Plumbline exists. Calm guidance for noisy markets, built for the person who has a portfolio, not a job in finance.">
+<link rel="canonical" href="/about/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plumbline">
+<meta property="og:title" content="About — Plumbline">
+<meta property="og:description" content="Why Plumbline exists. Calm guidance for the person who has a portfolio, not a job in finance.">
+<meta property="og:url" content="/about/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  /* About-specific overrides */
+  .page-hero { padding: 100px 28px 40px; border-bottom: 1px solid var(--border-rule); }
+  .page-hero-inner { max-width: var(--container-wide); margin: 0 auto; }
+  .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 24px; max-width: 14ch; }
+  .page-hero h1 .em { color: var(--accent); font-style: italic; font-weight: 700; }
+  .prose p { margin: 0 0 22px; font-size: 1.1rem; line-height: 1.72; color: var(--text-primary); max-width: 60ch; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { font-style: italic; color: var(--text-primary); font-weight: 500; }
+  .beliefs { margin-top: 64px; display: flex; flex-direction: column; gap: 0; border-top: 2px solid var(--text-primary); }
+  .belief { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 36px 0 40px; border-bottom: var(--rule); align-items: baseline; }
+  .belief .roman { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; font-variant-numeric: tabular-nums; }
+  .belief p { margin: 0; font-size: 1.18rem; line-height: 1.55; color: var(--text-primary); font-weight: 500; max-width: 56ch; letter-spacing: -0.01em; }
+  .team-block { background: var(--bg-muted); padding: 100px 28px; border-top: 1px solid var(--border-rule); }
+  .team-inner { max-width: var(--container-narrow); margin: 0 auto; }
+  .team-grid { margin-top: 48px; display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: start; padding-top: 32px; border-top: var(--rule); }
+  .team-mark { width: 100px; height: 100px; background: var(--bg-deep); display: grid; place-items: center; color: var(--accent-soft); }
+  .team-mark svg { width: 44px; height: 44px; }
+  .team-name { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
+  .team-role { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-top: 6px; }
+  .team-bio { font-size: 1.02rem; line-height: 1.65; color: var(--text-secondary); margin-top: 14px; max-width: 50ch; }
+  .contact-row { margin-top: 56px; padding-top: 32px; border-top: var(--rule); display: flex; gap: 48px; flex-wrap: wrap; font-size: 14.5px; }
+  .contact-row .item .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); margin-bottom: 6px; }
+  .contact-row .item a { color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+
+  @media (max-width: 980px) {
+    .team-block { padding: 80px 24px; }
+  }
+  @media (max-width: 640px) {
+    .page-hero { padding: 72px 24px 32px; }
+    .belief { grid-template-columns: 50px 1fr; gap: 16px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-block { padding: 72px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+  <span class="right"><a href="/">Built for observation, not advice →</a></span>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#pulse-explainer">How Pulse works</a>
+      <a href="/about/" class="active">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/pricing/">Pricing</a>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-cta"><a href="/pricing/" class="btn btn-primary">Start free trial <span class="arrow">→</span></a></div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow"><span class="num">01</span> · About</div>
+    <h1>Why Plumbline <span class="em">exists.</span></h1>
+    <p class="lede">Plumbline is a calm, observational surface for the person who already has a portfolio — and already knows, in the rough sense, what is in it — and would like to <em>read</em> it. Read it across the macro weather that is quietly moving it. Read it against the news tone that is shifting around it. Read it on a Tuesday morning in three minutes, against a frame that holds, before the day starts pulling your attention in nine other directions.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">02</span> · This is for you if</span>
+    <h2>This is for you <span class="em">if</span></h2>
+    <div class="prose">
+      <ul style="list-style: none; padding: 0; margin: 0; max-width: 60ch;">
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; border-bottom: var(--rule); font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">a.</span><span>you want to be more informed about the decisions that you make or have made</span></li>
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; border-bottom: var(--rule); font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">b.</span><span>you hold investments across more than one platform</span></li>
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; border-bottom: var(--rule); font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">c.</span><span>you already know what P/E (price-to-earnings), dividend yield, and beta mean</span></li>
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; border-bottom: var(--rule); font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">d.</span><span>you treat investing as a practice, not a hobby</span></li>
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; border-bottom: var(--rule); font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">e.</span><span>you read the financial press but not the day-trader feeds</span></li>
+        <li style="display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 14px 0; font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);"><span style="color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;">f.</span><span>you want fewer, better-translated signals, not more data</span></li>
+      </ul>
+      <p style="margin-top: 24px; font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary);">If several of these land, the rest of the page will probably be familiar too.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="background: var(--bg-muted);">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">03</span> · What we believe</span>
+    <h2>Five convictions <span class="em">the product is built on.</span></h2>
+    <p class="lede">These are not slogans. They are decisions that shape the design, the copy, and what the product refuses to do.</p>
+
+    <div class="beliefs">
+      <div class="belief">
+        <div class="roman">i.</div>
+        <p>A <em>Steady</em> Pulse means the underlying signals are aligned. Don't move. When the twelve factors agree — when the price behaviour, the macro context (including the Bank of Canada overnight rate when it matters), and the news tone are pointing the same way — Pulse reads Steady. That is not a signal to act. It is a signal that nothing is asking for your attention. The hardest discipline in active investing is the discipline of <em>not moving</em> when nothing has changed. Plumbline is built to make that discipline easier, by giving you a read that says, in plain terms, <em>nothing has changed, and the absence of change is the information</em>.</p>
+      </div>
+      <div class="belief">
+        <div class="roman">ii.</div>
+        <p>A <em>Watch</em> Pulse means something has shifted. Read more before you act. A Watch band — Light, Active, Strong, or Intense — means at least one of the twelve factors has moved enough to register. That is the moment to read, not the moment to transact. Read the Daily Brief. Read the factor breakdown. Read the news tone. Read what the same signal was doing a week ago. If after reading the picture is clear, act. If it is not, do not. Pulse tells you when the picture has changed. It does not tell you what to do about it. That gap is intentional, and it is the part of the product you will be most grateful for, three years from now, when you look back on the times the urge to act was strongest and the picture was least clear.</p>
+      </div>
+      <div class="belief">
+        <div class="roman">iii.</div>
+        <p>Markets reward consistency, not frequency. The investor who checks their book once a day, in a calm voice, and acts only when the read justifies the action, will tend to make better decisions over a decade than the one who checks nine times a day and acts on every twitch. The data on this is older than any of us. Plumbline's whole product is built to slow you down enough to be consistent — to give you one read per day that is worth the read, in a voice that does not push you toward a transaction, with a vocabulary that lets you hold a position with confidence when holding is the right call. Frequency is a product of design, not of markets. Plumbline is designed for less frequency and more rigour. That is the bet.</p>
+      </div>
+      <div class="belief">
+        <div class="roman">iv.</div>
+        <p>The 12 factors are not a secret. We document all of them. Tap any Pulse score, and you see the factors that pushed it up and the factors that pulled it down. The factors are not hidden behind a paywall, are not described in vague terms, and are not the proprietary moat the product pretends to defend. The moat, if there is one, is the discipline of blending twelve factors consistently across every position in your book, every day, in a voice you can read. The factors themselves — what they measure, how they are computed, what their inputs are — are documented in full inside the product. If you want to disagree with a factor's weight, you can. Disagreement, reasoned, is part of how the read gets better over time.</p>
+      </div>
+      <div class="belief">
+        <div class="roman">v.</div>
+        <p>Your decisions are yours. Pulse surfaces what it sees, nothing more. Plumbline will never tell you to buy, to sell, to trim, to add, or to hold. The product earns its value by being trustworthy, and a product that whispers <em>buy</em> or <em>sell</em> stops being trustworthy the moment it does. The Pulse score is observational. The Daily Brief is observational. The product, as a whole, is observational. What you do with the read is yours, made on the basis of your own book, your own horizon, your own tolerance for risk, your own registered-account rules (RRSP, TFSA, FHSA, or non-registered), and any advice you have received from a qualified professional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">04</span> · How Pulse works</span>
+    <h2>One score, <span class="em">twelve factors,</span> five bands.</h2>
+    <p class="lede">The longer methodology lives in <a href="/#pulse-explainer" style="color: var(--accent); border-bottom: 1px solid var(--accent);">the Pulse explainer on the home page</a>; this is the short version.</p>
+
+    <div class="prose">
+      <p>Pulse is a number from 0 to 100 that sits on every holding in your portfolio, in one of five named bands: Quiet, Light, Active, Strong, Intense. The number is not a price. It is not a forecast. It is a single, blended read on how much attention a position deserves from you today, given the conditions around it.</p>
+      <p>The score is built from twelve factors. Some of them come from the market itself — price movement over different windows, how a holding has behaved relative to its own history, how it has behaved relative to the sector it lives in, how its volatility has changed over the recent past. Some come from the wider world — Bank of Canada overnight rate conditions, currency moves, commodity pressures, the kind of macro weather that quietly shapes every position in a book. And some come from the news — drawn from a curated set of Canadian and global financial and geopolitical sources, weighted through the GDELT index for tone and direction over a rolling window, so the news factor reflects shift rather than any single story.</p>
+      <p>No single factor drives the score. The twelve are blended together, weighted by how much each one tends to matter in the current environment, and the result is the number you see on the screen. When you tap on a Pulse score, the factors that pushed it up or pulled it down are listed for you, in the real term and a one-line definition the first time. Nothing is hidden. Nothing is dressed up. You can see the ingredients, and you can disagree with the outcome.</p>
+      <p>The five bands are observational, not directional. A Strong Pulse means conditions are moving. It does not mean the position is a buy. A Quiet Pulse means nothing is asking for your attention. It does not mean the position is safe. The bands describe the conditions. What the conditions mean for you, given your own circumstances, is your call.</p>
+      <p>What Pulse does not do is just as important as what it does. Pulse does not predict. It does not forecast. It does not rank holdings against each other in a way that implies one is better than another. The score has no opinion on whether you should act. It has only an opinion on whether the conditions around a position are worth noticing today.</p>
+      <p>The asset universe is the full S&amp;P 500, the top ten cryptocurrencies by market capitalisation, and ten major commodities — gold, silver, oil, natural gas, wheat, corn, soybeans, copper, platinum, and lithium. Canadian-listed names (TSX and TSXV) are in scope. Most major U.S. names are interlisted on TSX in CAD; Plumbline shows you the price on the exchange you hold the position on, in the currency you hold it in, and the data layer handles the FX. The picture is the whole picture.</p>
+      <p style="margin-top: 24px; padding: 18px 22px; border-left: 3px solid var(--accent); background: rgba(184, 84, 43, 0.04); font-style: italic; color: var(--text-primary); font-weight: 500;">Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-block">
+  <div class="team-inner">
+    <span class="eyebrow"><span class="num">05</span> · A note on the team</span>
+    <h2>Built by <span class="em">one person.</span></h2>
+
+    <div class="team-grid">
+      <div class="team-mark">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg>
+      </div>
+      <div>
+        <div class="team-name">Taha Hasnain</div>
+        <div class="team-role">Founder, sole maintainer</div>
+        <p class="team-bio">Plumbline is built by one person, working full-time on a product that takes the full-time attention of more than one person to do well. It is a Canadian product, launched first for Canadian investors, with a U.S. version planned as a v1.1 follow-on.</p>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div class="item">
+        <div class="label">General</div>
+        <a href="mailto:hello@plumbline.app">hello@plumbline.app</a>
+      </div>
+      <div class="item">
+        <div class="label">Press</div>
+        <a href="mailto:press@plumbline.app">press@plumbline.app</a>
+      </div>
+      <div class="item">
+        <div class="label">Support</div>
+        <a href="mailto:support@plumbline.app">support@plumbline.app</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">06</span> · Closing</span>
+    <h2>Small on purpose. <span class="em">Quiet on purpose.</span></h2>
+    <p class="lede" style="font-size: 1.18rem;">The product is small on purpose, quiet on purpose, and bound to the holdings you actually have. The discipline of a terminal, the readability of a notebook. If the fit list at the top of this page reads like a list of recognitions, the rest of the site will tell you how to start.</p>
+    <p style="margin-top: 24px;"><a href="/pricing/" class="btn btn-primary" style="display: inline-flex;">Start your 7-day trial <span style="margin-left: 8px;">→</span></a></p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <span class="eyebrow" style="margin: 0 auto 24px; display: inline-flex;"><span class="num">07</span> · Start</span>
+  <h2>See your investments <span class="em">clearly.</span></h2>
+  <p>Seven days, on us. Then $4.99 CAD a month, for as long as you find it useful.</p>
+  <a href="/pricing/" class="btn btn-primary">Start the 7-day trial <span class="arrow">→</span></a>
+  <div class="micro">No credit card required to explore.</div>
+</section>
+
+<footer>
+  <div class="grid">
+    <div class="brand-block">
+      <div class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></div>
+      <p>Calm guidance for noisy markets. A driver's-seat view of your investments.</p>
+    </div>
+    <div><h4>Product</h4><ul><li><a href="/#pulse-explainer">How Pulse works</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="mailto:hello@plumbline.app">Contact</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="/terms/">Terms</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+  </div>
+  <div class="legal">
+    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only.</p>
+    <a href="#">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="scrim" data-nav-scrim hidden style="position: fixed; inset: 0; z-index: 99; background: rgba(27,26,23,0.42);"></div>
+<aside id="mobile-drawer" data-nav-drawer aria-hidden="true" hidden style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-base); border-bottom: 2px solid var(--text-primary); padding: 18px 20px 28px; box-shadow: 0 12px 32px rgba(15,14,12,0.18);">
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 8px;">
+    <a href="/" class="brand" style="font-size: 18px;"><span class="brand-mark" style="width: 20px; height: 20px;"><svg viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <button data-nav-close aria-label="Close menu" style="background: transparent; border: none; width: 40px; height: 40px; display: grid; place-items: center; color: var(--accent); border-radius: 4px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav aria-label="Mobile" style="display: flex; flex-direction: column; border-top: 1px solid var(--border-rule); margin-top: 8px;">
+    <a href="/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Home<span style="color: var(--accent);">→</span></a>
+    <a href="/faq/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">FAQ<span style="color: var(--accent);">→</span></a>
+    <a href="/pricing/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Pricing<span style="color: var(--accent);">→</span></a>
+    <a href="/#pulse-explainer" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary);">How Pulse works<span style="color: var(--accent);">→</span></a>
+  </nav>
+  <div style="margin-top: 20px;"><a href="/pricing/" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px 20px; font-size: 15px;">Get started <span class="arrow">→</span></a><div style="margin-top: 12px; font-size: 12px; color: var(--text-secondary); text-align: center; font-style: italic;">7-day free trial · then $4.99 CAD/mo</div></div>
+</aside>
+
+<script src="/assets/js/plumbline.js"></script>
+</body>
+</html>

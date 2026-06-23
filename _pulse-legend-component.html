@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseLegend + Filter Component — Plumbline</title>
+<meta name="description" content="Standalone review surface for the PulseLegend (Decision 15) and Pulse signal filter (Decision 16).">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- Ribbons and nav reused for review context -->
+<div class="ribbon">
+  <span class="left">PulseLegend + Filter — review surface</span>
+  <span class="right"><a href="/">Back to home →</a></span>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <div class="nav-links">
+      <a href="/pricing/">Pricing</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-cta"><a href="/pricing/" class="btn btn-primary">Get started <span class="arrow">→</span></a></div>
+  </nav>
+</header>
+
+<section class="muse-slot pulse-explainer" style="padding-top: 80px;">
+  <div class="container-narrow">
+    <span class="eyebrow"><span class="num">03</span> · Component review</span>
+    <h2>PulseLegend + signal <span class="em">filter.</span></h2>
+    <p class="lede" style="margin-bottom: 32px;">This page is a review surface for the PulseLegend (Decision 15) and the Pulse signal filter (Decision 16). It renders both components exactly as they appear inside the Pulse explainer on the home page, with mocked 12-factor data. Click pills to filter. Filter state persists in the URL.</p>
+
+    <!-- Filter -->
+    <div class="pulse-filter" data-pulse-filter aria-label="Filter the 12-factor legend">
+      <div class="filter-head">
+        <div class="label">Filter the 12 factors</div>
+        <button type="button" class="reset" data-reset>Reset filters</button>
+      </div>
+      <div class="axis" data-axis="strength">
+        <div class="axis-name">Strength</div>
+        <div class="pills" role="group" aria-label="Filter by strength band">
+          <button type="button" class="pill" data-axis-name="strength" data-value="all" aria-pressed="true">All</button>
+          <button type="button" class="pill" data-axis-name="strength" data-value="4-5" aria-pressed="false">4–5 · Strong &amp; Intense</button>
+          <button type="button" class="pill" data-axis-name="strength" data-value="2-3" aria-pressed="false">2–3 · Light &amp; Active</button>
+          <button type="button" class="pill" data-axis-name="strength" data-value="1" aria-pressed="false">1 · Quiet</button>
+        </div>
+      </div>
+      <div class="axis" data-axis="type">
+        <div class="axis-name">Type</div>
+        <div class="pills" role="group" aria-label="Filter by factor category">
+          <button type="button" class="pill" data-axis-name="type" data-value="all" aria-pressed="true">All</button>
+          <button type="button" class="pill" data-axis-name="type" data-value="valuation" aria-pressed="false">Valuation</button>
+          <button type="button" class="pill" data-axis-name="type" data-value="macro" aria-pressed="false">Macro</button>
+          <button type="button" class="pill" data-axis-name="type" data-value="news" aria-pressed="false">News</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="pulse-legend" data-pulse-legend aria-labelledby="legend-title">
+      <div class="legend-head">
+        <div class="title" id="legend-title">The 12 factors · Pulse signal legend</div>
+        <div class="meta">12 distinct factors · 3 categories · colour-blind-safe</div>
+      </div>
+
+      <div class="legend-grid">
+        <div class="factor" data-strength="5" data-type="valuation">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 1: Return 1 day — valuation"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="6.5" fill="var(--pulse-1)"/></svg></span>01</div>
+          <div class="name"><span class="real-term">Return — 1 day</span></div>
+          <div class="definition">How the holding moved in today's session, expressed as a percentage from yesterday's close.</div>
+          <div class="category">Valuation</div>
+        </div>
+        <div class="factor" data-strength="4" data-type="valuation">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 2: Return vs sector — valuation"><svg viewBox="0 0 18 18"><rect x="2.5" y="2.5" width="13" height="13" fill="var(--pulse-2)"/></svg></span>02</div>
+          <div class="name"><span class="real-term">Return vs. sector</span></div>
+          <div class="definition">How the holding moved today against the average of the sector it lives in.</div>
+          <div class="category">Valuation</div>
+        </div>
+        <div class="factor" data-strength="3" data-type="valuation">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 3: Volatility — valuation"><svg viewBox="0 0 18 18"><polygon points="9,2 16,16 2,16" fill="var(--pulse-3)"/></svg></span>03</div>
+          <div class="name"><span class="real-term">Volatility</span></div>
+          <div class="definition">How big the holding's day-to-day swings have been over the recent window.</div>
+          <div class="category">Valuation</div>
+        </div>
+        <div class="factor" data-strength="2" data-type="valuation">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 4: Drawdown depth — valuation"><svg viewBox="0 0 18 18"><polygon points="9,2 16,9 9,16 2,9" fill="var(--pulse-4)"/></svg></span>04</div>
+          <div class="name"><span class="real-term">Drawdown depth</span></div>
+          <div class="definition">How far the holding has fallen from its recent peak, as a percentage of that peak.</div>
+          <div class="category">Valuation</div>
+        </div>
+        <div class="factor" data-strength="4" data-type="macro">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 5: Bank of Canada overnight rate — macro"><svg viewBox="0 0 18 18"><polygon points="9,2 15.5,5.5 15.5,12.5 9,16 2.5,12.5 2.5,5.5" fill="var(--pulse-5)"/></svg></span>05</div>
+          <div class="name"><span class="real-term">Bank of Canada overnight rate</span></div>
+          <div class="definition">The BoC policy rate and the direction it is moving, weighted by how rate-sensitive the holding is.</div>
+          <div class="category">Macro</div>
+        </div>
+        <div class="factor" data-strength="2" data-type="macro">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 6: Currency CAD — macro"><svg viewBox="0 0 18 18"><polygon points="9,2 14,9 9,16 4,9" fill="var(--pulse-6)"/></svg></span>06</div>
+          <div class="name"><span class="real-term">Currency (CAD)</span></div>
+          <div class="definition">The move in the Canadian dollar against the holding's listing currency, weighted by exposure.</div>
+          <div class="category">Macro</div>
+        </div>
+        <div class="factor" data-strength="3" data-type="macro">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 7: Commodity pressure — macro"><svg viewBox="0 0 18 18"><polygon points="9,2 16,8 13,16 5,16 2,8" fill="var(--pulse-7)"/></svg></span>07</div>
+          <div class="name"><span class="real-term">Commodity pressure</span></div>
+          <div class="definition">How the commodity complex relevant to the holding (energy, metals, grains) has moved over the recent window.</div>
+          <div class="category">Macro</div>
+        </div>
+        <div class="factor" data-strength="4" data-type="macro">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 8: Sector rotation — macro"><svg viewBox="0 0 18 18"><polygon points="5,2 13,2 17,6 17,12 13,16 5,16 1,12 1,6" fill="var(--pulse-8)"/></svg></span>08</div>
+          <div class="name"><span class="real-term">Sector rotation</span></div>
+          <div class="definition">How the holding's sector has performed against the broader market over the recent window.</div>
+          <div class="category">Macro</div>
+        </div>
+        <div class="factor" data-strength="4" data-type="news">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 9: News tone shift — news"><svg viewBox="0 0 18 18"><path d="M9 3 L15 11 L11 11 L11 16 L7 16 L7 11 L3 11 Z" fill="var(--pulse-9)"/></svg></span>09</div>
+          <div class="name"><span class="real-term">News tone shift</span></div>
+          <div class="definition">The change in tone across stories mentioning the holding, over a rolling window.</div>
+          <div class="category">News</div>
+        </div>
+        <div class="factor" data-strength="2" data-type="news">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 10: Event volume — news"><svg viewBox="0 0 18 18"><path d="M8 2 H10 V8 H16 V10 H10 V16 H8 V10 H2 V8 H8 Z" fill="var(--pulse-10)"/></svg></span>10</div>
+          <div class="name"><span class="real-term">Event volume</span></div>
+          <div class="definition">The number of distinct news events mentioning the holding in the recent window, normalised to baseline.</div>
+          <div class="category">News</div>
+        </div>
+        <div class="factor" data-strength="3" data-type="news">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 11: Story direction — news"><svg viewBox="0 0 18 18"><path d="M9 16 L15 8 L11 8 L11 3 L7 3 L7 8 L3 8 Z" fill="var(--pulse-11)"/></svg></span>11</div>
+          <div class="name"><span class="real-term">Story direction</span></div>
+          <div class="definition">Whether the dominant narrative has shifted (favourable ↔ unfavourable), tracked across stories.</div>
+          <div class="category">News</div>
+        </div>
+        <div class="factor" data-strength="1" data-type="news">
+          <div class="swatch-row"><span class="swatch" role="img" aria-label="Factor 12: News versus macro alignment — news"><svg viewBox="0 0 18 18"><rect x="2" y="8" width="14" height="3" fill="var(--pulse-12)"/></svg></span>12</div>
+          <div class="name"><span class="real-term">News vs. macro alignment</span></div>
+          <div class="definition">Whether news tone and macro signals point the same way — agreement reinforces, contradiction softens.</div>
+          <div class="category">News</div>
+        </div>
+      </div>
+
+      <p class="legend-foot">
+        <strong>On glyphs and colour.</strong> Every factor gets a distinct colour and a distinct glyph shape, so the legend reads under colour-blindness. The 12-factor palette is separate from the 5-band palette — the colours above identify <em>which</em> factor; the Quiet / Light / Active / Strong / Intense bands identify <em>how much</em> attention. The full specification lives in <a href="/pulse-legend-spec.md" style="color: var(--accent); border-bottom: 1px solid var(--accent);">pulse-legend-spec.md</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script src="/assets/js/plumbline.js"></script>
+</body>
+</html>

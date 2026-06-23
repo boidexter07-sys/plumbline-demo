@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're in — Plumbline</title>
+<meta name="description" content="Your 7-day trial is active. Welcome to Plumbline.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  /* Trial-activated state — user has signed up, sees welcome + tile preview */
+  .ribbon .trial { color: var(--accent); font-weight: 600; }
+  .ribbon .trial strong { font-weight: 700; }
+  .nav-cta { gap: 16px; font-size: 13.5px; color: var(--text-secondary); }
+  .nav-cta .label { }
+  .nav-cta .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--text-primary); color: var(--bg-base); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+
+  .welcome { padding: 80px 28px 60px; border-bottom: 1px solid var(--border-rule); }
+  .welcome-inner { max-width: 880px; margin: 0 auto; }
+  .check-banner {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 8px 16px;
+    background: rgba(74, 110, 58, 0.10);
+    border: 1px solid rgba(74, 110, 58, 0.30);
+    color: var(--status-pos);
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 28px;
+  }
+  .check-banner .ico { width: 14px; height: 14px; }
+  .welcome h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 24px; max-width: 14ch; }
+  .welcome h1 .em { color: var(--accent); font-style: italic; font-weight: 700; }
+  .welcome .lede { font-size: 1.2rem; line-height: 1.6; color: var(--text-secondary); max-width: 56ch; }
+  .welcome-actions { margin-top: 40px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .welcome-actions .btn-primary { padding: 16px 28px; font-size: 15px; }
+
+  .preview { padding: 60px 28px 100px; }
+  .preview-inner { max-width: var(--container); margin: 0 auto; }
+  .preview-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 18px; margin-bottom: 32px; border-bottom: 2px solid var(--text-primary); flex-wrap: wrap; gap: 16px; }
+  .preview-head .left .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 6px; }
+  .preview-head .left h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.2; }
+  .preview-head .right { font-size: 13px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+  .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border-rule); background: var(--bg-surface); }
+  .preview-tile {
+    padding: 32px 28px;
+    border-right: 1px solid var(--border-rule);
+    border-bottom: 1px solid var(--border-rule);
+    min-height: 220px;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative;
+  }
+  .preview-tile:nth-child(3n) { border-right: none; }
+  .preview-tile:nth-last-child(-n+3) { border-bottom: none; }
+  .preview-tile.featured {
+    grid-column: 1 / -1;
+    background: var(--text-primary);
+    color: var(--text-on-deep);
+    border-right: none;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 44px 40px;
+  }
+  .preview-tile.featured::before {
+    content: 'Featured';
+    position: absolute; top: 20px; right: 28px;
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    font-weight: 700;
+  }
+  .preview-tile .ico { width: 28px; height: 28px; color: var(--accent); }
+  .preview-tile.featured .ico { color: var(--accent-soft); }
+  .preview-tile .name { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.015em; }
+  .preview-tile.featured .name { font-size: 1.2rem; }
+  .preview-tile .desc { color: var(--text-secondary); font-size: 13.5px; line-height: 1.5; max-width: 40ch; }
+  .preview-tile.featured .desc { color: var(--text-on-deep-dim); max-width: none; }
+  .preview-tile .peek {
+    margin-top: auto;
+    font-size: 14px; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-rule);
+  }
+  .preview-tile.featured .peek { border-top-color: rgba(245, 241, 232, 0.18); color: var(--text-on-deep); }
+  .preview-tile .peek .small { font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-left: 6px; }
+  .preview-tile.featured .peek .small { color: var(--text-on-deep-dim); }
+
+  .trial-row { margin-top: 56px; padding: 28px 32px; background: var(--bg-muted); border: 1px solid var(--border-rule); display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+  .trial-row .info { font-size: 14px; line-height: 1.55; }
+  .trial-row .info strong { display: block; font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .trial-row .info .small { font-size: 12.5px; color: var(--text-secondary); }
+  .trial-row .days { font-size: 32px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .trial-row .days .label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); margin-top: 4px; }
+
+  .help { padding: 80px 28px; background: var(--bg-deep); color: var(--text-on-deep); text-align: center; }
+  .help-inner { max-width: var(--container-narrow); margin: 0 auto; }
+  .help .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent-soft); margin-bottom: 16px; display: inline-block; }
+  .help h2 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .help p { color: var(--text-on-deep-dim); max-width: 50ch; margin: 0 auto 28px; font-size: 1.05rem; line-height: 1.6; }
+  .help .links { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+  .help .links a { color: var(--text-on-deep); border-bottom: 1px solid var(--accent-soft); padding-bottom: 2px; font-size: 14px; }
+
+  @media (max-width: 980px) {
+    .welcome { padding: 56px 24px 48px; }
+    .preview-grid { grid-template-columns: repeat(2, 1fr); }
+    .preview-tile:nth-child(3n) { border-right: 1px solid var(--border-rule); }
+    .preview-tile:nth-child(2n) { border-right: none; }
+    .preview-tile:nth-last-child(-n+3) { border-bottom: 1px solid var(--border-rule); }
+    .preview-tile:nth-last-child(-n+2) { border-bottom: none; }
+    .preview-tile.featured { grid-column: 1 / -1; grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
+    .trial-row { grid-template-columns: 1fr; gap: 20px; text-align: left; }
+  }
+  @media (max-width: 640px) {
+    .nav-links, .nav-cta .label { display: none; }
+    .welcome { padding: 48px 20px 40px; }
+    .preview-grid { grid-template-columns: 1fr; }
+    .preview-tile { border-right: none !important; }
+    .preview-tile:nth-last-child(-n+2) { border-bottom: 1px solid var(--border-rule); }
+    .preview-tile:last-child { border-bottom: none; }
+    .preview { padding: 40px 20px 72px; }
+    .trial-row { padding: 24px; }
+    .help { padding: 56px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+  <span class="trial"><strong>7 days</strong> remaining in your free trial</span>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <div class="nav-links">
+      <a href="#dashboard">Dashboard</a>
+      <a href="/#pulse-explainer">How Pulse works</a>
+      <a href="#">Settings</a>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-cta">
+      <span class="label">taha@plumbline.example</span>
+      <div class="avatar">T</div>
+    </div>
+  </nav>
+</header>
+
+<section class="welcome">
+  <div class="welcome-inner">
+    <div class="check-banner">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+      Your 7-day trial is active
+    </div>
+    <h1>You're <span class="em">in.</span></h1>
+    <p class="lede">Your trial is active and the product is open. Start with one ticker — a position you already hold, or one you have been thinking about — and let Pulse do its read on it. The rest of the dashboard fills in from there.</p>
+    <p class="lede" style="font-size: 1.05rem; margin-top: 18px; color: var(--text-secondary); max-width: 56ch;">If you hold positions across an RRSP, a TFSA, an FHSA, and a non-registered account, you can tag each holding by account type as you enter it, and Plumbline will show you a Pulse breakdown for each bucket separately. Most people find that view useful on day one. If you only want one book, you can ignore the tags and enter everything together.</p>
+    <div class="welcome-actions">
+      <a href="#" class="btn btn-primary">Enter Plumbline <span class="arrow">→</span></a>
+      <a href="/#pulse-explainer" class="btn btn-ghost">Take a tour first</a>
+    </div>
+  </div>
+</section>
+
+<section class="preview" id="dashboard">
+  <div class="preview-inner">
+    <div class="preview-head">
+      <div class="left">
+        <div class="eyebrow">A look inside</div>
+        <h2>Six tiles. One screen.</h2>
+      </div>
+      <div class="right">Here is what is waiting for you on the other side</div>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-tile featured">
+        <div>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+          <div class="name" style="margin-top: 12px;">Pulse</div>
+          <p class="desc">A 12-factor score in five bands, on every position, updated through the week. Tap any score to see the factors that pushed it up or pulled it down.</p>
+        </div>
+        <div>
+          <div style="font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;">—</div>
+          <div style="margin-top: 6px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-soft); font-weight: 700;">Add a holding to see your Pulse</div>
+        </div>
+      </div>
+
+      <div class="preview-tile">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+        <div class="name">My Holdings</div>
+        <div class="desc">Your real portfolio, kept private to you, in any account you choose to enter. Tag each holding by account type — RRSP, TFSA, FHSA, or non-registered.</div>
+        <div class="peek">Empty<span class="small"> · add a ticker</span></div>
+      </div>
+
+      <div class="preview-tile">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 15h10M4 11h16M4 7h7"/></svg>
+        <div class="name">Daily Brief</div>
+        <div class="desc">A short written read each morning on what the world did and what it touched in your book — including the way a Bank of Canada rate decision lands on the rate-sensitive names you hold.</div>
+        <div class="peek">Today<span class="small"> · ~400 words</span></div>
+      </div>
+
+      <div class="preview-tile">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+        <div class="name">Markets Now</div>
+        <div class="desc">The headlines that matter, without the hysteria — drawn from Canadian and global sources and indexed through GDELT.</div>
+        <div class="peek">S&amp;P/TSX 22,184<span class="small"> +0.31%</span></div>
+      </div>
+
+      <div class="preview-tile">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l18-9-6 18-3-7-9-2z"/></svg>
+        <div class="name">My Sandbox</div>
+        <div class="desc">Three private paper portfolios, where you can rehearse decisions without money at risk. Test what if you trimmed that U.S. tech position before year-end.</div>
+        <div class="peek">Empty<span class="small"> · 3 slots</span></div>
+      </div>
+
+      <div class="preview-tile">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        <div class="name">Leaderboard</div>
+        <div class="desc">Public sandboxes, ranked by risk-adjusted return, defaulting to a three-month window.</div>
+        <div class="peek">Top 32%<span class="small"> this week</span></div>
+      </div>
+    </div>
+
+    <div class="trial-row">
+      <div class="info">
+        <strong>Your trial: 7 days free, then $4.99 CAD a month.</strong>
+        <span class="small">Billed monthly in Canadian dollars through Stripe. No payment information is collected before the seventh day, and you will not be charged until day eight. Cancel anytime from Settings — two clicks, no friction. Your data remains exportable for ninety days after cancellation.</span>
+      </div>
+      <div class="days">
+        7
+        <span class="label">days left</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">While you're here</div>
+    <h2>Want a quick orientation?</h2>
+    <p>Read your own portfolio like someone who knows what they're looking at. A few minutes of reading will get you to most of what the product does.</p>
+    <div class="links">
+      <a href="/#pulse-explainer">Read how Pulse works</a>
+      <a href="/#three-layer-disclosure">The three layers</a>
+      <a href="/about/">About Plumbline</a>
+      <a href="mailto:support@plumbline.app">Email support</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="grid" style="grid-template-columns: 1fr; gap: 32px;">
+    <div class="legal" style="margin: 0; padding-top: 0; border-top: none;">
+      <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only.</p>
+      <a href="#">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

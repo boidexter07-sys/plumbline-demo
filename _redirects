@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects
+# Trailing slash normalisation — clean URLs everywhere
+/pricing    /pricing/    301
+/about      /about/      301
+/faq        /faq/        301
+/terms      /terms/      301
+/privacy    /privacy/    301
+
+# 404 for any unknown route is handled by /404.html (Cloudflare Pages default)

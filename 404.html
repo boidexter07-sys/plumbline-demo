@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found — Plumbline</title>
+<meta name="description" content="The page you're looking for doesn't exist.">
+<link rel="canonical" href="/404">
+<meta name="robots" content="noindex, follow">
+<meta property="og:title" content="Not found — Plumbline">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 28px; }
+  .not-found { max-width: 640px; text-align: center; }
+  .not-found .eyebrow { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 24px; }
+  .not-found .eyebrow .num { font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+  .not-found .fig-num { font-size: clamp(7rem, 16vw, 11rem); font-weight: 800; line-height: 1; letter-spacing: -0.05em; color: var(--text-primary); margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+  .not-found .fig-num .em { color: var(--accent); font-style: italic; font-weight: 700; }
+  .not-found h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 20px; max-width: 22ch; margin-left: auto; margin-right: auto; }
+  .not-found h1 .em { color: var(--accent); font-style: italic; font-weight: 600; }
+  .not-found p { font-size: 1.1rem; line-height: 1.65; color: var(--text-secondary); max-width: 46ch; margin: 0 auto 40px; }
+  .not-found .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .not-found .meta { margin-top: 56px; padding-top: 24px; border-top: var(--rule); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .not-found .meta strong { color: var(--text-primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+  footer { background: var(--bg-deep-2); color: var(--text-on-deep-dim); padding: 40px 28px 28px; }
+  footer .legal { max-width: var(--container); margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--border-on-deep); display: flex; justify-content: space-between; gap: 24px; font-size: 12.5px; }
+  footer .legal p { max-width: 80ch; margin: 0; line-height: 1.55; font-style: italic; }
+  @media (max-width: 640px) {
+    main { padding: 64px 20px; }
+    .not-found .actions { flex-direction: column; }
+    .not-found .actions .btn { justify-content: center; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <span class="nav-spacer"></span>
+    <a href="/" class="btn btn-primary">Back to Plumbline <span class="arrow">→</span></a>
+  </nav>
+</header>
+
+<main>
+  <div class="not-found">
+    <div class="eyebrow"><span class="num">404</span> · Not found</div>
+    <div class="fig-num">4<span class="em">0</span>4</div>
+    <h1>This page doesn't <span class="em">exist.</span></h1>
+    <p>The link you followed does not lead anywhere. It might be an old URL from a previous version of the site, a mis-typed address, or a link shared by someone before the page was renamed. Nothing here is broken on your end — the page just isn't here.</p>
+    <p style="font-style: italic; color: var(--text-primary); font-weight: 500;">Your book is the same, wherever you go next.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Back to Plumbline <span class="arrow">→</span></a>
+      <a href="mailto:hello@plumbline.app" class="btn" style="background: transparent; color: var(--text-primary); border-color: var(--text-primary);">Tell us what you were looking for</a>
+    </div>
+    <div class="meta">
+      <span><strong>Error 404</strong></span>
+      <span>Page not found</span>
+      <span>No portfolio data was lost</span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="legal">
+    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only.</p>
+  </div>
+</footer>
+
+</body>
+</html>

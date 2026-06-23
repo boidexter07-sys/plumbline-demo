@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Plumbline</title>
+<meta name="description" content="Plumbline is calm guidance for noisy markets.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  /* Clerk modal state — landing page dimmed behind, modal centred */
+  body { min-height: 100vh; }
+  .page-behind { filter: blur(2px); opacity: 0.55; pointer-events: none; }
+  .hero { padding: 80px 28px 100px; border-bottom: 1px solid var(--border-rule); }
+  .hero-inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr; gap: 80px; align-items: start; }
+
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(27, 26, 23, 0.42);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px 20px;
+    animation: fadeIn .18s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .modal {
+    background: var(--bg-base);
+    border: 1px solid var(--border-strong);
+    width: 100%; max-width: 460px;
+    padding: 44px 40px 36px;
+    position: relative;
+    box-shadow: 0 24px 64px rgba(15, 14, 12, 0.28);
+    animation: modalIn .22s ease;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .modal .close {
+    position: absolute; top: 14px; right: 14px;
+    background: transparent; border: none;
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .modal .close:hover { background: var(--bg-muted); color: var(--text-primary); }
+  .modal .brand-mini { display: inline-flex; align-items: baseline; gap: 8px; font-weight: 800; font-size: 18px; color: var(--text-primary); margin-bottom: 28px; letter-spacing: -0.025em; }
+  .modal .brand-mini .brand-mark { width: 22px; height: 22px; color: var(--accent); transform: translateY(3px); }
+  .modal h2 { font-size: 1.65rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 10px; max-width: 22ch; }
+  .modal h2 .em { color: var(--accent); font-style: italic; font-weight: 600; }
+  .modal .sub { font-size: 0.98rem; line-height: 1.5; color: var(--text-secondary); margin: 0 0 28px; max-width: 38ch; }
+  .modal .sub strong { color: var(--text-primary); font-weight: 600; }
+
+  .oauth { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+  .oauth-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 13px 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    font-size: 14.5px; font-weight: 500;
+    color: var(--text-primary);
+    border-radius: 4px;
+    width: 100%; cursor: pointer;
+    transition: background .15s;
+  }
+  .oauth-btn:hover { background: var(--bg-muted); }
+  .oauth-btn .ico { width: 18px; height: 18px; flex-shrink: 0; }
+  .oauth-btn.google .ico { color: #4285F4; }
+  .oauth-btn.apple .ico { color: var(--text-primary); }
+
+  .divider { display: flex; align-items: center; gap: 14px; margin: 20px 0 22px; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border-rule); }
+  .divider span { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); }
+
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .field label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); }
+  .field input {
+    padding: 13px 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    font: inherit; font-size: 14.5px;
+    color: var(--text-primary);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(184, 84, 43, 0.15); }
+  .field input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+  .submit-btn {
+    width: 100%; padding: 14px 20px;
+    background: var(--accent); color: var(--bg-base);
+    border: none;
+    font-size: 14.5px; font-weight: 600;
+    border-radius: 4px; margin-top: 8px;
+    transition: background .15s; cursor: pointer;
+  }
+  .submit-btn:hover { background: var(--accent-soft); }
+
+  .mode-toggle { text-align: center; margin-top: 22px; font-size: 13px; color: var(--text-secondary); }
+  .mode-toggle a { color: var(--accent); font-weight: 600; border-bottom: 1px solid var(--accent); padding-bottom: 1px; cursor: pointer; }
+
+  .modal-legal { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-rule); font-size: 11.5px; line-height: 1.5; color: var(--text-secondary); max-width: 38ch; }
+  .modal-legal a { color: var(--text-primary); border-bottom: 1px solid var(--text-primary); }
+
+  .clerk-badge {
+    position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
+    font-size: 10.5px; color: var(--text-secondary); letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(245, 241, 232, 0.92);
+    padding: 5px 12px; border-radius: 12px;
+    border: 1px solid var(--border-rule);
+  }
+
+  @media (max-width: 980px) { .hero-inner { grid-template-columns: 1fr; gap: 56px; } }
+  @media (max-width: 640px) {
+    .modal { padding: 36px 24px 28px; }
+    .nav-cta, .nav-links { display: none; }
+    .hero { padding: 56px 20px 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Landing page behind modal (dimmed) -->
+<div class="page-behind">
+  <div class="ribbon">
+    <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+    <span class="right"><a href="/">Plumbline now covers the full S&amp;P 500 →</a></span>
+  </div>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
+        <span>Plumbline</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#pulse-explainer">How Pulse works</a>
+      </div>
+      <span class="nav-spacer"></span>
+      <div class="nav-cta">
+        <a href="/pricing/" class="btn btn-primary">Get started <span class="arrow">→</span></a>
+      </div>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="kicker"><span class="num">01</span> · A new way to read your investments</div>
+        <h1>A driver's-seat view of your <span class="em">investments.</span></h1>
+        <p class="hero-sub"><strong style="color: var(--text-primary); font-weight: 500;">See your investments clearly. Understand what they mean.</strong> Read your own portfolio like someone who knows what they're looking at. Plumbline is calm guidance for the rest of us.</p>
+      </div>
+      <div class="video-frame">
+        <div class="video-placeholder">
+          <div class="icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="label">Hero video</div>
+          <div class="sub">To be rendered at launch.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Modal overlay -->
+<div class="modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="close" aria-label="Close" onclick="window.location.href='/'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <div class="brand-mini">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span>
+      <span>Plumbline</span>
+    </div>
+
+    <h2 id="modal-title">Welcome to <span class="em">Plumbline.</span></h2>
+    <p class="sub">Read your own portfolio like someone who knows what they're looking at. Seven days free, then <strong>$4.99 CAD/month</strong>. Cancel from settings in two clicks.</p>
+
+    <div class="oauth">
+      <button type="button" class="oauth-btn google">
+        <svg class="ico" viewBox="0 0 18 18"><path fill="currentColor" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="currentColor" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.583-5.036-3.71H.957v2.332C2.438 15.983 5.482 18 9 18z" opacity="0.7"/><path fill="currentColor" d="M3.964 10.708c-.18-.54-.282-1.117-.282-1.708s.102-1.168.282-1.708V4.96H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.04l3.007-2.332z" opacity="0.4"/><path fill="currentColor" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.96L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" opacity="0.85"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="oauth-btn apple">
+        <svg class="ico" viewBox="0 0 18 18" fill="currentColor"><path d="M14.94 13.93c-.27.62-.59 1.2-.97 1.74-.51.74-.93 1.25-1.25 1.53-.5.46-1.04.7-1.62.71-.42 0-.92-.12-1.5-.36-.59-.24-1.12-.36-1.61-.36-.51 0-1.06.12-1.65.36-.59.24-1.07.36-1.43.37-.55.03-1.1-.22-1.65-.73-.35-.31-.78-.83-1.31-1.57C.85 14.7.33 13.69.33 12.16c0-1.69.54-3.09 1.62-4.2.85-.85 1.87-1.28 3.06-1.3.44 0 1.02.14 1.74.41.72.27 1.18.41 1.38.41.15 0 .66-.16 1.51-.49.81-.3 1.49-.42 2.05-.37 1.51.12 2.65.73 3.4 1.81-1.29.79-1.93 1.89-1.92 3.31.01 1.1.42 2.02 1.21 2.74.36.34.76.6 1.2.78-.1.28-.2.55-.31.81zM11.86 2.38c0 .88-.32 1.7-.96 2.45-.77.9-1.7 1.42-2.72 1.34a2.72 2.72 0 01-.02-.33c0-.84.36-1.74 1-2.51.32-.39.72-.71 1.21-.97.49-.26.95-.4 1.39-.42.01.12.02.23.02.34l.08.1z"/></svg>
+        Continue with Apple
+      </button>
+    </div>
+
+    <div class="divider"><span>or</span></div>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com" value="">
+    </div>
+
+    <button type="button" class="submit-btn">Continue with email →</button>
+
+    <div class="mode-toggle">
+      Already have an account? <a>Sign in</a>
+    </div>
+
+    <p class="modal-legal">By continuing, you agree to our <a href="/terms/">Terms</a> and <a href="/privacy/">Privacy Policy</a>. Plumbline is for observation only. Pulse is a measure of market conditions, not a recommendation. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.</p>
+
+    <div class="clerk-badge">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      Secured by Clerk
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

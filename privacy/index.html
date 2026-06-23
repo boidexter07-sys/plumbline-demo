@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Plumbline</title>
+<meta name="description" content="What Plumbline collects, what we do with it, and what we deliberately do not.">
+<link rel="canonical" href="/privacy/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy — Plumbline">
+<meta property="og:description" content="What Plumbline collects, what we do with it, and what we deliberately do not.">
+<meta property="og:url" content="/privacy/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/plumbline.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24' fill='none' stroke='%23B8542B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  .legal-hero { padding: 100px 28px 56px; border-bottom: 1px solid var(--border-rule); }
+  .legal-hero-inner { max-width: var(--container-legal); margin: 0 auto; }
+  .legal-hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; margin: 0 0 20px; max-width: 16ch; }
+  .legal-hero h1 .em { color: var(--accent); font-style: italic; font-weight: 700; }
+  .legal-hero .meta { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-secondary); padding-top: 24px; border-top: var(--rule); margin-top: 24px; display: flex; gap: 32px; flex-wrap: wrap; }
+  .legal-hero .meta strong { color: var(--text-primary); font-weight: 700; }
+  .legal-body { padding: 80px 28px 120px; }
+  .legal-body .container-narrow { display: flex; flex-direction: column; gap: 72px; }
+  .legal-section { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: baseline; }
+  .legal-section .num { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; font-variant-numeric: tabular-nums; padding-top: 6px; }
+  .legal-section h2 { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 16px; }
+  .legal-section h2 .em { color: var(--accent); font-style: italic; font-weight: 600; }
+  .legal-section p { margin: 0 0 16px; font-size: 1.02rem; line-height: 1.7; color: var(--text-primary); max-width: 64ch; }
+  .legal-section p:last-child { margin-bottom: 0; }
+  .legal-section p em { font-style: italic; color: var(--text-primary); font-weight: 500; }
+  .legal-section ul { margin: 16px 0; padding-left: 20px; max-width: 64ch; }
+  .legal-section li { font-size: 1.02rem; line-height: 1.7; color: var(--text-primary); margin-bottom: 8px; }
+  .legal-section li strong { color: var(--text-primary); font-weight: 600; }
+
+  @media (max-width: 980px) {
+    .legal-section { grid-template-columns: 60px 1fr; gap: 20px; }
+  }
+  @media (max-width: 640px) {
+    .legal-hero { padding: 72px 24px 40px; }
+    .legal-body { padding: 56px 24px 80px; }
+    .legal-section { grid-template-columns: 1fr; gap: 8px; }
+    .legal-section .num { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <span class="left">Issue 01 · Vol. 1 · Tuesday, June 2026</span>
+  <span class="right"><a href="/terms/">Read our terms →</a></span>
+</div>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/pricing/">Pricing</a>
+    </div>
+    <span class="nav-spacer"></span>
+    <div class="nav-cta"><a href="/pricing/" class="btn btn-primary">Start free trial <span class="arrow">→</span></a></div>
+    <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </nav>
+</header>
+
+<section class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="eyebrow"><span class="num">01</span> · Legal</div>
+    <h1>Plumbline <span class="em">Privacy.</span></h1>
+    <p style="font-size: 1.15rem; line-height: 1.65; color: var(--text-secondary); max-width: 56ch;">Plumbline collects the minimum amount of information needed to operate the product. This page describes what is collected, what is done with it, and what is deliberately not collected.</p>
+    <div class="meta">
+      <span><strong>Effective</strong> · June 23, 2026</span>
+      <span><strong>Version</strong> · 1.0</span>
+      <span><strong>Reading time</strong> · ~6 minutes</span>
+    </div>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="container-narrow">
+
+    <div class="legal-section">
+      <div class="num">02</div>
+      <div>
+        <h2>What we collect</h2>
+        <p>Plumbline collects the minimum amount of information needed to operate the product. Specifically, we collect:</p>
+        <ul>
+          <li>An email address, used as the sign-in identifier for your account.</li>
+          <li>A portfolio, entered by you, listing the tickers, position sizes, and optional account-type tags (RRSP / TFSA / FHSA / non-registered) you want to track.</li>
+          <li>A Pulse history, generated by the product for the positions you have entered.</li>
+          <li>A Daily Brief archive, generated by the product for the period in which you have an active account.</li>
+          <li>Sandbox positions, if you choose to use the sandbox feature.</li>
+          <li>Usage data, in the form of aggregate, anonymous interactions with the product — which tiles you opened, which Pulse factors you expanded, which Daily Briefs you read. This data is used to improve the product and is not tied to your name.</li>
+          <li>Payment confirmation from Stripe, including the fact that a payment was made, the amount in CAD, and the date. Plumbline does not see or store your card number, CVV, or expiration date. Stripe handles all of that.</li>
+        </ul>
+        <p>We do not collect your name, your address, your phone number, your date of birth, your Social Insurance Number, your brokerage credentials, your financial account numbers, or any government identifier. None of those are needed for the product to work.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">03</div>
+      <div>
+        <h2>How we use it</h2>
+        <p>The information Plumbline collects is used to operate the product and to operate nothing else.</p>
+        <p>Your email is used to sign you in, to send transactional messages (subscription confirmations, billing receipts, security alerts), and — if you opt in — to send the Daily Brief by email. We do not send marketing email, and we do not sell or rent your email to anyone.</p>
+        <p>Your portfolio is used to compute Pulse scores, to populate the Daily Brief, and to render the holdings view. Your Pulse history is stored so you can see how the score has changed over time. Your Daily Brief archive is stored so you can revisit briefs from earlier days. Your sandbox positions are stored so you can keep working in the sandbox across sessions.</p>
+        <p>Usage data is used to improve the product. If most users expand the same Pulse factor, we know that factor is worth surfacing. If most users skip the same tile, we know that tile needs work. Usage data is aggregated and anonymous. It is not tied to your portfolio, your email, or your account.</p>
+        <p>We do not sell your data. We do not license your data to third parties. We do not use your data to train external models. We do not share your data with anyone outside of the small set of vendors listed in section 03.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">04</div>
+      <div>
+        <h2>Stripe and Clerk</h2>
+        <p>Two third-party services handle the parts of the product that Plumbline does not handle itself.</p>
+        <p><strong>Stripe</strong> handles payment processing. When you start a paid subscription, Stripe collects your card information and processes the charge. Plumbline receives a payment confirmation — the fact that the payment was made, the amount, the date — but does not see the card number, the CVV, or the expiration date. Stripe's handling of card data is governed by Stripe's own privacy policy, which is linked in the footer of the checkout page.</p>
+        <p><strong>Clerk</strong> handles authentication. When you sign in, Clerk verifies your credentials and issues a session. Plumbline does not see or store your password in plaintext. Clerk's handling of authentication data is governed by Clerk's own privacy policy, which is linked on the sign-in page.</p>
+        <p>Both services are reputable, both operate under their own privacy frameworks, and both are subject to their own compliance regimes. The product could not operate without them, and the trade-offs in choosing them are intentional — Plumbline does not want to handle raw card data or raw password data, and the third-party providers do that work better than the product could.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">05</div>
+      <div>
+        <h2>Cookies and tracking</h2>
+        <p>Plumbline uses a small number of essential cookies — the kind required for the sign-in flow to work, for the session to persist, and for the subscription state to be remembered. These cookies are functional. They are not used for advertising, retargeting, attribution, or cross-site tracking.</p>
+        <p>In v1.0, Plumbline does not use third-party analytics, does not embed tracking pixels, does not run advertising scripts, and does not allow third-party services to set cookies through the product. The product is ad-free. There is no banner asking you to consent to tracking, because there is no tracking to consent to.</p>
+        <p>If third-party analytics are added in a future version, this policy will be updated, and active subscribers will be notified by email before the change takes effect.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">06</div>
+      <div>
+        <h2>Data export and deletion</h2>
+        <p>Your data is yours.</p>
+        <p>You can export your portfolio, your Pulse history, your Daily Brief archive, and your sandbox positions from the settings page, in standard CSV or JSON formats. The exports are portable enough to load into a spreadsheet, another tool, or your own records. The export is available at any time during an active subscription, and for ninety days after cancellation.</p>
+        <p>You can delete your account at any time from the settings page. Deletion removes the account, the portfolio, the Pulse history, the Daily Brief archive, the sandbox positions, and any associated usage data, within a short window. Deletion is permanent. We cannot recover a deleted account.</p>
+        <p>If you cancel your subscription without deleting the account, the data remains exportable for ninety days, and is then permanently deleted. The deletion is automatic.</p>
+        <p>To request an export or a deletion by email, write to privacy@plumbline.app. We honor verified requests within the timeframes required by applicable law, and most are processed within a few business days.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">07</div>
+      <div>
+        <h2>Children's privacy</h2>
+        <p>Plumbline is not for children. The product is not designed for, marketed to, or appropriate for anyone under 18 years of age (the age of majority in most Canadian provinces; in provinces where the age of majority is 19, the higher age applies). We do not knowingly collect information from anyone under the applicable age of majority. If we learn that we have collected information from someone under the applicable age of majority, we will delete it.</p>
+        <p>If you are a parent or guardian and believe a child has created an account, write to privacy@plumbline.app and the account will be deleted.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">08</div>
+      <div>
+        <h2>Governing law — Canada and PIPEDA</h2>
+        <p>Plumbline is a Canadian service. The Personal Information Protection and Electronic Documents Act (PIPEDA) is the governing Canadian federal privacy law for the product, supplemented by any applicable provincial legislation in the province where you reside. You can find PIPEDA on the Office of the Privacy Commissioner of Canada's website at priv.gc.ca. Where we store data, we use Canadian data residency where reasonably available; where a service we depend on stores data outside Canada (Stripe, Clerk, our hosting provider), we have confirmed that the service handles Canadian personal information in accordance with PIPEDA or under contractual terms that meet its standards. If you have a privacy complaint that we cannot resolve directly, you have the right to contact the Office of the Privacy Commissioner of Canada.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">09</div>
+      <div>
+        <h2>Changes to this policy</h2>
+        <p>This policy may change. We will notify active subscribers by email when a change is made, and the new policy will be posted on this page. If a change is material — if it affects what we collect, how we use it, who we share it with, or your rights as a user — we will give you at least thirty days notice before the change takes effect, and you will have the option to cancel before the change applies.</p>
+        <p>Minor changes — clarifications, typo corrections, vendor name updates — may take effect immediately, with notice given in the changelog at the bottom of this page.</p>
+        <p>The version date at the top of this policy is the most recent revision. Earlier versions are available on request.</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <div class="num">10</div>
+      <div>
+        <h2>Contact</h2>
+        <p>For any question, complaint, or concern about this policy, your data, or your account, write to privacy@plumbline.app. We read every message. We respond to most within a few business days.</p>
+        <p>For everything else, support@plumbline.app is the right address.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="grid">
+    <div class="brand-block">
+      <div class="brand"><span class="brand-mark"><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></div>
+      <p>Calm guidance for noisy markets. A driver's-seat view of your investments.</p>
+    </div>
+    <div><h4>Product</h4><ul><li><a href="/#pulse-explainer">How Pulse works</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/about/">About</a></li><li><a href="mailto:hello@plumbline.app">Contact</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="/terms/">Terms</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+  </div>
+  <div class="legal">
+    <p>© 2026 Plumbline, Inc. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service. Pulse is a measure of market conditions, not a recommendation. Plumbline is for observation only.</p>
+    <a href="#">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="scrim" data-nav-scrim hidden style="position: fixed; inset: 0; z-index: 99; background: rgba(27,26,23,0.42);"></div>
+<aside id="mobile-drawer" data-nav-drawer aria-hidden="true" hidden style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg-base); border-bottom: 2px solid var(--text-primary); padding: 18px 20px 28px; box-shadow: 0 12px 32px rgba(15,14,12,0.18);">
+  <div style="display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 8px;">
+    <a href="/" class="brand" style="font-size: 18px;"><span class="brand-mark" style="width: 20px; height: 20px;"><svg viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 4 L16 28 M4 16 L28 16 M8 8 L24 24 M24 8 L8 24"/></svg></span><span>Plumbline</span></a>
+    <button data-nav-close aria-label="Close menu" style="background: transparent; border: none; width: 40px; height: 40px; display: grid; place-items: center; color: var(--accent); border-radius: 4px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav aria-label="Mobile" style="display: flex; flex-direction: column; border-top: 1px solid var(--border-rule); margin-top: 8px;">
+    <a href="/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">Home<span style="color: var(--accent);">→</span></a>
+    <a href="/about/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">About<span style="color: var(--accent);">→</span></a>
+    <a href="/faq/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-rule);">FAQ<span style="color: var(--accent);">→</span></a>
+    <a href="/pricing/" style="display: flex; align-items: center; justify-content: space-between; padding: 22px 0; font-size: 18px; font-weight: 600; color: var(--text-primary);">Pricing<span style="color: var(--accent);">→</span></a>
+  </nav>
+  <div style="margin-top: 20px;"><a href="/pricing/" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px 20px; font-size: 15px;">Get started <span class="arrow">→</span></a><div style="margin-top: 12px; font-size: 12px; color: var(--text-secondary); text-align: center; font-style: italic;">7-day free trial · then $4.99 CAD/mo</div></div>
+</aside>
+
+<script src="/assets/js/plumbline.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Plumbline v1.0 marketing surface
+User-agent: *
+Allow: /
+Disallow: /states/
+Disallow: /_pulse-legend-component.html
+
+Sitemap: /sitemap.xml
