@@ -1,16 +1,35 @@
-export const metadata = { title: "Markets Now — Plumbline" };
+import type { Metadata } from "next";
+import { StaticGate } from "../_components/StaticGate";
+import { MarketsList } from "./_components/MarketsList";
+
+export const metadata: Metadata = {
+  title: "Markets Now — Plumbline",
+  description: "12 headlines, each tappable to a position detail page.",
+  alternates: { canonical: "/markets/" },
+};
 
 export default function MarketsPage() {
   return (
-    <section style={{ padding: "40px 20px", maxWidth: 720, margin: "0 auto" }}>
-      <div className="eyebrow"><span className="num">04</span> · Phase 2 placeholder</div>
-      <h1>Markets Now</h1>
-      <p className="lede">
-        Markets Now ships in Phase 2 with the v1.0 data layer. 12 headlines, each tappable to a position detail page when one of your holdings is tagged. The Holdings-only / Watch-only / All filter is a Phase 3 feature; for now all headlines are public sources.
-      </p>
-      <div className="locked-disclaimer">
-        Plumbline is for observation only. Not investment advice. Pulse is a measure of market conditions, not a recommendation. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.
-      </div>
-    </section>
+    <StaticGate>
+      <section className="app-page app-page-wide">
+        <header className="app-page-header">
+          <div className="eyebrow"><span className="num">04</span> · Markets Now</div>
+          <h1 className="app-page-h1">
+            Markets <span className="app-page-h1-em">Now</span>.
+          </h1>
+          <div className="app-page-accent" aria-hidden="true" />
+          <p className="app-page-lede">
+            12 headlines from the asset universe you watch. Each is tappable to a
+            position detail page (Phase 3) or a Pulse breakdown.
+          </p>
+        </header>
+
+        <MarketsList />
+
+        <p className="locked-disclaimer">
+          Plumbline is for observation only. Not investment advice.
+        </p>
+      </section>
+    </StaticGate>
   );
 }

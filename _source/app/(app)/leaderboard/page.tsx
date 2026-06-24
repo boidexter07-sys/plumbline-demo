@@ -1,16 +1,35 @@
-export const metadata = { title: "Leaderboard — Plumbline" };
+import type { Metadata } from "next";
+import { StaticGate } from "../_components/StaticGate";
+import { LeaderboardRows } from "./_components/LeaderboardRows";
+
+export const metadata: Metadata = {
+  title: "Leaderboard — Plumbline",
+  description: "Top Pulse scores. Public sandboxes, risk-adjusted return, 3M default.",
+  alternates: { canonical: "/leaderboard/" },
+};
 
 export default function LeaderboardPage() {
   return (
-    <section style={{ padding: "40px 20px", maxWidth: 720, margin: "0 auto" }}>
-      <div className="eyebrow"><span className="num">06</span> · Phase 4 placeholder</div>
-      <h1>Leaderboard</h1>
-      <p className="lede">
-        The Leaderboard ships in Phase 4 with the public-sandbox opt-in flow. Top 15 of 218 public sandboxes, ranked by risk-adjusted return (Sharpe). 1M / 3M / 6M / 1Y timeframe toggle. The user&apos;s row is highlighted.
-      </p>
-      <div className="locked-disclaimer">
-        Plumbline is for observation only. Not investment advice. Pulse is a measure of market conditions, not a recommendation. Plumbline cannot be held liable for any investment outcome resulting from information surfaced by the service.
-      </div>
-    </section>
+    <StaticGate>
+      <section className="app-page">
+        <header className="app-page-header">
+          <div className="eyebrow"><span className="num">06</span> · Leaderboard</div>
+          <h1 className="app-page-h1">
+            <span className="app-page-h1-em">Leaderboard</span>.
+          </h1>
+          <div className="app-page-accent" aria-hidden="true" />
+          <p className="app-page-lede">
+            Top Pulse scores from public sandboxes. Risk-adjusted return, 3-month default
+            window.
+          </p>
+        </header>
+
+        <LeaderboardRows />
+
+        <p className="locked-disclaimer">
+          Plumbline is for observation only. Not investment advice.
+        </p>
+      </section>
+    </StaticGate>
   );
 }

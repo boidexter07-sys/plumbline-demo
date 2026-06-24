@@ -14,12 +14,18 @@ ROUTES=(
   "/terms/"
   "/privacy/"
   "/404.html"
+  "/auth/"
+  "/auth/sign-in/"
+  "/auth/verify/"
+  "/auth/forgot-password/"
   "/holdings/"
   "/pulse/"
   "/brief/"
   "/markets/"
   "/sandbox/"
   "/leaderboard/"
+  "/model-details/"
+  "/settings/"
 )
 
 fail=0
