@@ -158,50 +158,17 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* METHOD — what changed */}
       <section id="method" style={{ background: "var(--bg-base)" }}>
-        <div className="layer" style={{ padding: "60px 20px", borderTop: "var(--rule)" }}>
-          <div className="container layer-grid">
-            <div>
-              <div className="layer-num">04 · What changed</div>
-              <h2>The number is now read as <span style={{ color: "var(--accent)", fontStyle: "italic" }}>how much</span> is happening, not whether it&apos;s good or bad.</h2>
-              <p className="lede">Pulse reads magnitude: a move in either direction raises the score, by the same amount. A Quiet reading means nothing is asking for your attention — not that things are fine, and not that they aren&apos;t. The bands describe how much is happening, not whether the happening is good or bad. That is the whole point of the read.</p>
-              <p className="lede">The math behind the read lives in the <a href="/#model" style={{ color: "var(--accent)", fontWeight: 600 }}>Model Details</a> page, and the plain-language version in the <a href="/faq/" style={{ color: "var(--accent)", fontWeight: 600 }}>FAQ</a>.</p>
-            </div>
-            <div className="vis-block">
-              <div className="eyebrow"><span className="num">04.1</span> · Before &amp; after, on the same day</div>
-              <h3 style={{ fontSize: "1.0625rem", marginBottom: 24 }}>NVDA · 2024-08-05 · intraday crash then reversal</h3>
-              <div className="before-after">
-                <div>
-                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 700, marginBottom: 8 }}>Signed reading</div>
-                  <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: "-0.04em", color: "var(--text-secondary)", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>0.21</div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-secondary)", marginTop: 6 }}>Quiet · read: &ldquo;nothing&apos;s happening&rdquo;</div>
-                  <p style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 10, lineHeight: 1.5 }}>The high-attention scenario averaged out. A reading a trader would ignore.</p>
-                </div>
-                <div>
-                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 700, marginBottom: 8 }}>Magnitude reading</div>
-                  <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: "-0.04em", color: "var(--accent)", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>0.79</div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 6 }}>Strong · read: &ldquo;several signals are lined up&rdquo;</div>
-                  <p style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 10, lineHeight: 1.5 }}>Same conditions. The number finally says what the bands promise they say.</p>
-                </div>
-              </div>
-              <div style={{ marginTop: 24, paddingTop: 18, borderTop: "var(--rule)", fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                The before/after is the clearest way to see what the read is doing. The math, the baselines, the factor set, the band thresholds, and the asset-class mask are all on the Model Details page.
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Layer 1 */}
         <div className="layer" style={{ padding: "60px 20px", borderTop: "var(--rule)" }}>
           <div className="container layer-grid">
             <div>
-              <div className="layer-num">05 · Layer 1</div>
+              <div className="layer-num">04 · Layer 1</div>
               <h2>One read on <span style={{ color: "var(--accent)", fontStyle: "italic" }}>how much</span> is happening, per holding.</h2>
               <p className="lede">The first thing Plumbline owes you is a clear picture of what you own. Not a wall of tickers. Not a sea of red and green. A picture. Each holding appears once, with the things that actually matter about it in plain sight — what it is, what sector it lives in, and the Pulse score that says, in one number, how much attention the position is asking for.</p>
             </div>
             <div className="vis-block">
-              <div className="eyebrow"><span className="num">05.1</span> · Your holdings today</div>
+              <div className="eyebrow"><span className="num">04.1</span> · Your holdings today</div>
               <h3 style={{ fontSize: "1.0625rem", marginBottom: 6 }}>Sample book · 4 positions</h3>
               <div className="mini-hold">
                 <div className="row" style={{ background: "var(--bg-muted)", fontSize: 10.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 700 }}>
@@ -221,7 +188,7 @@ export default function LandingPage() {
         <div className="layer reverse" style={{ padding: "60px 20px", borderTop: "var(--rule)" }}>
           <div className="container layer-grid" style={{ gridTemplateColumns: "1fr" }}>
             <div className="vis-block" style={{ order: 1 }}>
-              <div className="eyebrow"><span className="num">06.1</span> · The Daily Brief</div>
+              <div className="eyebrow"><span className="num">05.1</span> · The Daily Brief</div>
               <h3 style={{ fontSize: "1.0625rem", marginBottom: 6 }}>3–5 stories · curated · every morning</h3>
               <div className="mini-hold" style={{ marginTop: 14 }}>
                 <div className="row" style={{ gridTemplateColumns: "64px 1fr" }}><span className="tk" style={{ color: "var(--accent-soft)" }}>RY</span><span><strong>Big Six banks brace for Q4 earnings</strong><span className="nm" style={{ display: "block", marginTop: 2 }}>Globe &amp; Mail · 06:42 ET</span></span></div>
@@ -230,7 +197,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div style={{ order: 2 }}>
-              <div className="layer-num">06 · Layer 2</div>
+              <div className="layer-num">05 · Layer 2</div>
               <h2>The day&apos;s story, <span style={{ color: "var(--accent)", fontStyle: "italic" }}>in your language</span>.</h2>
               <p className="lede">Three to five stories each morning, hand-curated, each tied to a holding you actually own. No firehose. No hysteria. The Daily Brief tells you what the day sounded like for the positions you hold — not what Twitter thought of it.</p>
             </div>
@@ -241,12 +208,12 @@ export default function LandingPage() {
         <div className="layer" style={{ padding: "60px 20px", borderTop: "var(--rule)" }}>
           <div className="container layer-grid">
             <div>
-              <div className="layer-num">07 · Layer 3</div>
+              <div className="layer-num">06 · Layer 3</div>
               <h2>Decide well. <span style={{ color: "var(--accent)", fontStyle: "italic" }}>A rehearsal room</span>, not a recommendation engine.</h2>
               <p className="lede">The sandbox is the most important tool in Plumbline. You can build a paper portfolio — a pretend book, with pretend positions and real Pulse scores — in private, with no money at risk, and watch it behave against the same Pulse model and the same Daily Brief that your real portfolio lives inside. The decisions you make in the rehearsal room are yours, and the consequences are not real, and that is exactly why the rehearsal is useful.</p>
             </div>
             <div className="vis-block">
-              <div className="eyebrow"><span className="num">07.1</span> · My Sandbox · &ldquo;Energy tilt — 2026&rdquo;</div>
+              <div className="eyebrow"><span className="num">06.1</span> · My Sandbox · &ldquo;Energy tilt — 2026&rdquo;</div>
               <div className="mini-hold">
                 <div className="row"><span><span className="tk">ENB</span><span className="nm">Enbridge · 40%</span></span><span className="chg">+1.8%</span><span className="pulse" style={{ color: "var(--status-watch)" }}>Active · 0.58</span></div>
                 <div className="row"><span><span className="tk">CNQ</span><span className="nm">Canadian Natural · 30%</span></span><span className="chg">+2.2%</span><span className="pulse" style={{ color: "var(--status-watch)" }}>Active · 0.61</span></div>
