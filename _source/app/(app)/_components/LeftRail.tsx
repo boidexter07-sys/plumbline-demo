@@ -22,7 +22,7 @@ import { useSessionInfo } from "./sessionInfo";
    ========================================================================= */
 
 const PORTFOLIO_LINKS = [
-  { href: "/",            label: "Dashboard",    num: "01" },
+  { href: "/dashboard/",   label: "Dashboard",    num: "01" },
   { href: "/holdings/",   label: "Holdings",     num: "02" },
   { href: "/pulse/",      label: "Pulse",        num: "03" },
   { href: "/brief/",      label: "Daily Brief",  num: "04" },
@@ -37,7 +37,6 @@ const V1_LINKS = [
 ];
 
 function isActive(pathname: string, href: string): boolean {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href);
 }
 
@@ -53,7 +52,7 @@ export function LeftRail() {
   return (
     <aside className="left-rail" aria-label="App navigation">
       <div className="left-rail-top">
-        <Link href="/" className="left-rail-brand">
+        <Link href="/dashboard/" className="left-rail-brand">
           <span>Plumbline</span>
           <BrandMark size={22} />
         </Link>

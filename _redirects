@@ -6,4 +6,21 @@
 /terms      /terms/      301
 /privacy    /privacy/    301
 
+# Legacy /welcome/ → / (canonical landing URL)
+/welcome    /            301
+/welcome/   /            301
+/welcome             /welcome/             301
+/auth                /auth/                301
+/auth/sign-in        /auth/sign-in/        301
+/auth/verify         /auth/verify/         301
+/auth/forgot-password /auth/forgot-password/ 301
+/holdings            /holdings/            301
+/pulse               /pulse/               301
+/brief               /brief/               301
+/markets             /markets/             301
+/sandbox             /sandbox/             301
+/leaderboard         /leaderboard/         301
+/model-details       /model-details/       301
+/settings            /settings/            301
+
 # 404 for any unknown route is handled by /404.html (Cloudflare Pages default)

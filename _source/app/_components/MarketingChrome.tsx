@@ -59,14 +59,14 @@ export function Nav({ currentPath = "" }: { currentPath?: string }) {
   return (
     <header className="nav-wrap">
       <nav className="nav" aria-label="Primary">
-        <Link href="/welcome/" className="brand">
+        <Link href="/" className="brand">
           <span>Plumbline</span>
           <BrandMark size={22} />
         </Link>
         <div className="nav-links">
-          <Link href="/welcome/#legend" aria-current={currentPath === "/welcome/" ? "page" : undefined}>Pulse</Link>
-          <Link href="/welcome/#method">Method</Link>
-          <Link href="/welcome/#legend">Legend</Link>
+          <Link href="/#legend" aria-current={currentPath === "/" ? "page" : undefined}>Pulse</Link>
+          <Link href="/#method">Method</Link>
+          <Link href="/#legend">Legend</Link>
           <Link href="/pricing/">Pricing</Link>
           <Link href="/faq/">FAQ</Link>
         </div>
@@ -113,11 +113,11 @@ export function SiteFooter() {
         <div>
           <h4>Product</h4>
           <ul>
-            <li><Link href="/welcome/#pulse">Pulse</Link></li>
-            <li><Link href="/welcome/#brief">Daily Brief</Link></li>
-            <li><Link href="/welcome/#sandbox">Sandbox</Link></li>
-            <li><Link href="/welcome/#leaderboard">Leaderboard</Link></li>
-            <li><Link href="/welcome/#model">Model Details</Link></li>
+            <li><Link href="/#pulse">Pulse</Link></li>
+            <li><Link href="/#brief">Daily Brief</Link></li>
+            <li><Link href="/#sandbox">Sandbox</Link></li>
+            <li><Link href="/#leaderboard">Leaderboard</Link></li>
+            <li><Link href="/#model">Model Details</Link></li>
           </ul>
         </div>
         <div>

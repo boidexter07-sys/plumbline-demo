@@ -29,7 +29,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="auth-shell">
       <aside className="auth-ink" aria-label="Plumbline overview">
-        <a className="auth-brand" href="/welcome/">
+        <a className="auth-brand" href="/">
           <span>Plumbline</span>
           <BrandMark size={26} />
         </a>

@@ -3,12 +3,12 @@ import {
   DashboardGreeting,
   DashboardEmptyState,
   DashboardOnboardingTiles,
-} from "./_components/DashboardHome";
+} from "../_components/DashboardHome";
 
 export const metadata: Metadata = {
   title: "Dashboard — Plumbline",
   description: "Your Plumbline dashboard — Pulse, holdings, the day's story.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/dashboard/" },
 };
 
 /* =========================================================================

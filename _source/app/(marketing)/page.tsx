@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { MarketingPage, LockedDisclaimer } from "../../_components/MarketingChrome";
-import { StartTrialButton } from "../../_components/StartTrialButton";
+import { MarketingPage, LockedDisclaimer } from "../_components/MarketingChrome";
+import { StartTrialButton } from "../_components/StartTrialButton";
 
 export const metadata: Metadata = {
   title: "Plumbline — A driver's-seat view of your investments.",
   description:
     "Plumbline is calm guidance for noisy markets. See your investments clearly. Understand what they mean. Built for Canadian investors, $4.99 CAD/mo after a 7-day free trial.",
-  alternates: { canonical: "/welcome/" },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "https://boidexter07-sys.github.io/plumbline-demo/",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 export default function LandingPage() {
   return (
     <MarketingPage
-      currentPath="/welcome/"
+      currentPath="/"
       ribbonLeft="Vol. 01 · The Plumbline Method · Issue 1 · 2026-06-24"
-      ribbonRightHref="/welcome/#legend"
+      ribbonRightHref="/#legend"
       ribbonRightLabel="The 29-factor Pulse is live — read the method →"
     >
       {/* HERO */}
@@ -41,7 +41,7 @@ export default function LandingPage() {
             <p className="lede">Plumbline is calm guidance for noisy markets — a dashboard, a daily brief, and a single number called Pulse that tells you how conditions are shifting. Not what to do. Just what is happening.</p>
             <div className="hero-actions">
               <StartTrialButton variant="primary">Start 7-day free trial</StartTrialButton>
-              <a className="btn-ghost" href="/welcome/#method">How Pulse is built →</a>
+              <a className="btn-ghost" href="/#method">How Pulse is built →</a>
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: "var(--text-secondary)", display: "flex", gap: 18, flexWrap: "wrap" }}>
               <span>$4.99 CAD / month</span>

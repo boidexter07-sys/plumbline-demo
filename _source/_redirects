@@ -1,10 +1,14 @@
 # Cloudflare Pages redirects
 # Trailing slash normalisation — clean URLs everywhere
-/pricing             /pricing/             301
-/about               /about/               301
-/faq                 /faq/                 301
-/terms               /terms/               301
-/privacy             /privacy/             301
+/pricing    /pricing/    301
+/about      /about/      301
+/faq        /faq/        301
+/terms      /terms/      301
+/privacy    /privacy/    301
+
+# Legacy /welcome/ → / (canonical landing URL)
+/welcome    /            301
+/welcome/   /            301
 /welcome             /welcome/             301
 /auth                /auth/                301
 /auth/sign-in        /auth/sign-in/        301

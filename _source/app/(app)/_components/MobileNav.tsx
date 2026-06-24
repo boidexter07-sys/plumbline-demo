@@ -19,7 +19,7 @@ import { useSessionInfo } from "./sessionInfo";
    ========================================================================= */
 
 const LINKS = [
-  { href: "/",              group: "PORTFOLIO",     label: "Dashboard",    num: "01" },
+  { href: "/dashboard/",   group: "PORTFOLIO",     label: "Dashboard",    num: "01" },
   { href: "/holdings/",     group: "PORTFOLIO",     label: "Holdings",     num: "02" },
   { href: "/pulse/",        group: "PORTFOLIO",     label: "Pulse",        num: "03" },
   { href: "/brief/",        group: "PORTFOLIO",     label: "Daily Brief",  num: "04" },
@@ -31,7 +31,6 @@ const LINKS = [
 ];
 
 function isActive(pathname: string, href: string): boolean {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href);
 }
 
