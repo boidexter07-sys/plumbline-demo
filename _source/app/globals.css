@@ -1,0 +1,469 @@
+/* =========================================================================
+   Plumbline v1.0 — globals.css
+   Locked Option C design system (cream + deep ink + burnt sienna).
+   Source of truth for design tokens, responsive grid, and shared components.
+
+   Tokens (Decision 9 — Option C editorial):
+     --cream #F5F1E8
+     --ink   #1B1A17
+     --burnt-sienna #B8542B
+   Typography: Inter via next/font (CSS variable --font-display)
+   Grid: mobile-first CSS Grid, 320px → 768px → 1440px
+
+   Decision 27 (memory rules): persist tokens + locked disclaimer + band
+   names + 0-1 range + $4.99 CAD + Canadian market scope.
+   Decision 9: cream + deep ink + burnt sienna — single accent.
+   Decision 15: PulseLegend 29-factor colour-blind-safe palette.
+   ========================================================================= */
+
+/* --- Tokens ----------------------------------------------------------- */
+:root {
+  /* Backgrounds */
+  --bg-base: #F5F1E8;          /* cream paper */
+  --bg-surface: #FBF8EF;       /* lighter cream (cards) */
+  --bg-muted: #EDE7D7;         /* slightly darker cream (alt sections) */
+  --bg-deep: #1B1A17;          /* deep ink */
+  --bg-deep-2: #0F0E0C;        /* deeper ink */
+
+  /* Text */
+  --text-primary: #1B1A17;     /* deep ink */
+  --text-secondary: #56524A;   /* warm grey */
+  --text-on-deep: #F5F1E8;     /* cream on deep */
+  --text-on-deep-dim: #A8A299; /* dim cream on deep */
+
+  /* Accent — burnt sienna (single accent) */
+  --accent: #B8542B;
+  --accent-soft: #D87B52;
+  --accent-glow: rgba(184, 84, 43, 0.15);
+
+  /* Status colours (Pulse) */
+  --status-pos: #4A6E3A;       /* Quiet / steady / ok */
+  --status-watch: #B89346;     /* Light / Active / mid */
+  --status-radar: #6E6E6E;     /* dormant */
+
+  /* Borders */
+  --border-subtle: rgba(27, 26, 23, 0.10);
+  --border-rule: rgba(27, 26, 23, 0.14);
+  --border-strong: rgba(27, 26, 23, 0.22);
+  --border-on-deep: rgba(245, 241, 232, 0.14);
+
+  /* 29-factor PulseLegend colour-blind-safe palette (Decision 15) */
+  --pulse-1: #1B1A17;          /* ink — return 1d */
+  --pulse-2: #B8542B;          /* sienna — return vs sector */
+  --pulse-3: #B89346;          /* ochre — volatility */
+  --pulse-4: #4A6E3A;          /* olive — drawdown */
+  --pulse-5: #2E6B7A;          /* deep teal — BoC rate */
+  --pulse-6: #5C7A8C;          /* slate — FX (6+16) */
+  --pulse-7: #8C6F3F;          /* bronze — commodity */
+  --pulse-8: #6B5B95;          /* plum — sector rotation */
+  --pulse-9: #C26456;          /* brick — news tone */
+  --pulse-10: #8E9FAA;         /* steel — event volume */
+  --pulse-11: #4D8B6E;         /* pine — story direction */
+  --pulse-12: #56524A;         /* warm grey — news vs macro */
+  --pulse-13: #9A4A2A;         /* inflation CPI */
+  --pulse-14: #A6613A;         /* gas */
+  --pulse-15: #C9A24A;         /* gold */
+  --pulse-17: #5A4E3A;         /* oil embargoed */
+  --pulse-18: #6B8E5A;         /* renewable */
+  --pulse-19: #4A5E70;         /* auto sales */
+  --pulse-20: #3D5466;         /* GDP per capita */
+  --pulse-21: #1B3A4B;         /* Fed funds */
+  --pulse-22: #264653;         /* 10y-2y spread */
+  --pulse-23: #7A5C3A;         /* unemployment */
+  --pulse-24: #8A6F4A;         /* shelter NHPI */
+  --pulse-25: #3F5E5A;         /* trade balance */
+  --pulse-26: #6E5B95;         /* inflation expectations */
+  --pulse-27: #A04A3A;         /* HY OAS */
+  --pulse-28: #3F4A56;         /* VIX */
+  --pulse-29: #7A6F4A;         /* prediction market */
+  --pulse-30: #B8442B;         /* news spike */
+
+  /* Band colours (5 bands — Quiet, Light, Active, Strong, Intense) */
+  --band-quiet: #C7BFA9;
+  --band-light: #B89346;
+  --band-active: #D87B52;
+  --band-strong: #B8542B;
+  --band-intense: #1B1A17;
+
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 680px;
+  --container-legal: 720px;
+  --container-wide: 920px;
+  --rule: 1px solid var(--border-rule);
+
+  /* Radii */
+  --radius-sm: 0;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Typography (next/font assigns --font-display) */
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Reset + base ---------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-display);
+  font-feature-settings: 'cv11', 'ss01', 'tnum';
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+}
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* =========================================================================
+   Mobile-first responsive grid (Phase 1 deliverable #4)
+   Single CSS Grid system, holds at 320px, scales at 768px (tablet) and
+   1440px (desktop). Named areas for the 6-tile dashboard.
+   Breakpoints defined once, referenced everywhere.
+   ========================================================================= */
+.pl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 16px;
+}
+
+/* Tablet: 768px and up */
+@media (min-width: 768px) {
+  .pl-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    padding: 28px;
+  }
+}
+
+/* Desktop: 1440px and up */
+@media (min-width: 1440px) {
+  .pl-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    padding: 40px;
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+}
+
+/* 6-tile named-area layout (desktop) */
+@media (min-width: 1440px) {
+  .pl-tile--pulse      { grid-area: 1 / 1 / 3 / 7; }   /* featured, 2-col span */
+  .pl-tile--holdings   { grid-area: 1 / 7 / 2 / 13; }
+  .pl-tile--brief      { grid-area: 2 / 7 / 3 / 13; }
+  .pl-tile--markets    { grid-area: 3 / 1 / 4 / 7; }
+  .pl-tile--sandbox    { grid-area: 3 / 7 / 4 / 10; }
+  .pl-tile--leaderboard{ grid-area: 3 / 10 / 4 / 13; }
+}
+
+/* --- Editorial ribbon (top strip) ------------------------------------ */
+.ribbon {
+  border-bottom: var(--rule);
+  padding: 10px 20px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg-base);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ribbon .left { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+.ribbon .right a { color: var(--accent); }
+
+/* --- Nav ------------------------------------------------------------- */
+.nav-wrap {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(245, 241, 232, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--text-primary);
+}
+.nav {
+  max-width: var(--container);
+  margin: 0 auto;
+  height: 76px;
+  padding: 0 20px;
+  display: flex; align-items: center; gap: 24px;
+}
+@media (min-width: 768px) {
+  .nav { padding: 0 28px; gap: 40px; }
+}
+.brand {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  font-weight: 800; font-size: 22px;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+.brand-mark {
+  width: 28px; height: 28px;
+  display: inline-grid; place-items: center;
+  color: var(--accent); transform: translateY(4px);
+}
+.nav-links {
+  display: none;
+  align-items: center; gap: 32px;
+  margin-left: 12px; flex: 1;
+}
+.nav-links a { font-size: 14.5px; font-weight: 500; padding: 4px 0; color: var(--text-primary); }
+.nav-links a:hover { color: var(--accent); }
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+}
+.nav-cta { display: none; }
+@media (min-width: 768px) {
+  .nav-cta { display: inline-flex; }
+}
+.nav-toggle {
+  background: transparent; border: 1px solid var(--border-rule);
+  width: 40px; height: 40px;
+  display: inline-grid; place-items: center;
+  color: var(--text-primary);
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+}
+
+/* --- Buttons --------------------------------------------------------- */
+.btn-primary {
+  background: var(--accent); color: var(--bg-base);
+  padding: 12px 22px; font-weight: 600; font-size: 14px;
+  letter-spacing: -0.005em;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--accent);
+  cursor: pointer; transition: background 0.15s ease;
+}
+.btn-primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.btn-secondary {
+  background: transparent; color: var(--text-primary);
+  padding: 12px 22px; font-weight: 600; font-size: 14px;
+  border: 1px solid var(--text-primary);
+  display: inline-flex; align-items: center; gap: 8px;
+  cursor: pointer;
+}
+.btn-secondary:hover { background: var(--text-primary); color: var(--bg-base); }
+.btn-ghost {
+  color: var(--text-primary); padding: 12px 18px; font-weight: 500; font-size: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-ghost:hover { color: var(--accent); }
+
+/* --- Section primitives --------------------------------------------- */
+section { padding: 60px 20px; }
+@media (min-width: 768px) {
+  section { padding: 80px 28px; }
+}
+.container { max-width: var(--container); margin: 0 auto; }
+.container-narrow { max-width: var(--container-narrow); margin: 0 auto; }
+.container-legal { max-width: var(--container-legal); margin: 0 auto; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-secondary);
+  font-weight: 600; margin-bottom: 20px;
+}
+.eyebrow .num { color: var(--accent); font-weight: 700; }
+.eyebrow::after {
+  content: ''; width: 24px; height: 1px;
+  background: var(--accent); display: inline-block; margin-left: 6px;
+}
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.035em; margin-bottom: 24px; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.15; margin-bottom: 18px; max-width: 22ch; }
+h2 .em { color: var(--accent); font-style: italic; }
+h3 { font-size: 1.25rem; line-height: 1.3; margin-bottom: 10px; letter-spacing: -0.01em; }
+.lede {
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 60ch;
+  margin: 0 0 32px;
+}
+.disclaimer {
+  font-size: 11.5px; color: var(--text-secondary);
+  max-width: 80ch; line-height: 1.55;
+  padding: 14px 18px;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+}
+
+/* --- Locked disclaimer (Decision 27, persists across rebuilds) -------- */
+.locked-disclaimer {
+  font-size: 12px; color: var(--text-secondary);
+  max-width: 80ch; line-height: 1.55;
+  padding: 14px 18px;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  margin: 24px 0;
+}
+
+/* --- Price pill ------------------------------------------------------ */
+.price-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  background: var(--bg-deep); color: var(--text-on-deep);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--bg-deep);
+}
+.price-pill .num { color: var(--accent-soft); font-weight: 700; }
+
+/* --- Footer --------------------------------------------------------- */
+footer.site-footer {
+  padding: 64px 20px 32px;
+  background: var(--bg-base);
+  border-top: 2px solid var(--text-primary);
+  margin-top: 64px;
+}
+@media (min-width: 768px) {
+  footer.site-footer { padding: 64px 28px 32px; }
+}
+footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  footer .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+}
+footer h4 {
+  font-size: 12.5px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700; margin-bottom: 14px;
+}
+footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+footer ul a { font-size: 14px; color: var(--text-primary); }
+footer ul a:hover { color: var(--accent); }
+footer .legal-row {
+  padding: 18px 0 0;
+  font-size: 11.5px; color: var(--text-secondary);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  border-top: var(--rule);
+  margin-top: 32px;
+  max-width: var(--container);
+  margin-left: auto; margin-right: auto;
+}
+
+/* --- App shell (Phase 1 placeholder tiles) --------------------------- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(245, 241, 232, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--text-primary);
+  padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .app-header { padding: 14px 28px; }
+}
+.app-tile {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 200px;
+  position: relative;
+}
+.app-tile .tile-num {
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 700;
+}
+.app-tile .tile-title {
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.app-tile .tile-meta {
+  font-size: 13px; color: var(--text-secondary);
+  margin-top: auto;
+}
+.app-tile .tile-placeholder-badge {
+  position: absolute; top: 16px; right: 16px;
+  font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 700;
+  color: var(--accent);
+  background: var(--bg-muted);
+  padding: 4px 8px;
+}
+.app-tile .tile-glyph {
+  width: 36px; height: 36px;
+  color: var(--accent);
+  display: grid; place-items: center;
+}
+
+/* --- Auth gate (Phase 1 client-side, since static export) ----------- */
+.auth-gate {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+.auth-gate .gate-card {
+  max-width: 480px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 40px 32px;
+}
+.auth-gate h2 { max-width: 100%; }
+.auth-gate .gate-actions {
+  margin-top: 24px;
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+/* --- Utility helpers ------------------------------------------------- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.text-secondary { color: var(--text-secondary); }
+.text-accent { color: var(--accent); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* --- Pulse score display (used on landing + pulse tile) -------------- */
+.pulse-ring {
+  width: 220px; height: 220px;
+  display: grid; place-items: center;
+  margin: 0 auto;
+  position: relative;
+}
+.pulse-ring .score {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.pulse-ring .band {
+  font-size: 11.5px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 4px;
+}
+.pulse-ring .label {
+  font-size: 11.5px; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
