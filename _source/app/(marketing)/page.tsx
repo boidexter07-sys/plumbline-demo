@@ -30,18 +30,18 @@ export default function LandingPage() {
       currentPath="/"
       ribbonLeft="Vol. 01 · The Plumbline Method · Issue 1 · 2026-06-24"
       ribbonRightHref="/#legend"
-      ribbonRightLabel="The new 29-factor Pulse is live — read the method →"
+      ribbonRightLabel="The 29-factor Pulse is live — read the method →"
     >
       {/* HERO */}
       <section className="hero" style={{ padding: "96px 20px 80px", background: "var(--bg-base)", position: "relative", overflow: "hidden" }}>
         <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "48px", alignItems: "center" }}>
           <div className="hero-copy">
-            <div className="hero-pill"><span className="pulse-dot" />New: 29-factor Pulse model · rebuilt around intensity, not direction</div>
+            <div className="hero-pill"><span className="pulse-dot" />29-factor Pulse · reads intensity, not direction</div>
             <h1>A driver&apos;s-seat view of your investments.</h1>
             <p className="lede">Plumbline is calm guidance for noisy markets — a dashboard, a daily brief, and a single number called Pulse that tells you how conditions are shifting. Not what to do. Just what is happening.</p>
             <div className="hero-actions">
               <StartTrialButton variant="primary">Start 7-day free trial</StartTrialButton>
-              <a className="btn-ghost" href="/#method">How the new Pulse is built →</a>
+              <a className="btn-ghost" href="/#method">How Pulse is built →</a>
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: "var(--text-secondary)", display: "flex", gap: 18, flexWrap: "wrap" }}>
               <span>$4.99 CAD / month</span>
@@ -109,7 +109,7 @@ export default function LandingPage() {
           <div className="legend-lead">
             <div>
               <div className="eyebrow"><span className="num">02</span> · Twenty-nine signals, one read</div>
-              <h2>The new Pulse is built from <span style={{ color: "var(--accent)", fontStyle: "italic" }}>29</span> measurable factors.</h2>
+              <h2>Pulse is built from <span style={{ color: "var(--accent)", fontStyle: "italic" }}>29</span> measurable factors.</h2>
             </div>
             <p className="lede" style={{ marginBottom: 0 }}>Twelve of those are price-and-macro signals you&apos;ve heard of. Seventeen are things that quietly shape every position in your book whether you&apos;re watching them or not — Bank of Canada policy, Canadian headline inflation, gold as a risk-off hedge, the credit spread, the VIX. Pulse blends them, drops what&apos;s missing, and gives you a single number between zero and one.</p>
           </div>
@@ -141,8 +141,7 @@ export default function LandingPage() {
       <section id="bands" style={{ padding: "60px 20px", background: "var(--bg-base)" }}>
         <div className="container">
           <div className="eyebrow"><span className="num">03</span> · The five bands</div>
-          <h2>Five bands. <span style={{ color: "var(--accent)", fontStyle: "italic" }}>Cutpoints</span> are no longer 0.20/0.40/0.60/0.80.</h2>
-          <p className="lede">The names and the 0–1 range don&apos;t change. The numeric cutpoints between them are now derived from the empirical distribution of the composite across the universe, and locked as percentiles. The band names stay. &ldquo;Intense&rdquo; stays rare by construction.</p>
+          <h2>Five bands. <span style={{ color: "var(--accent)", fontStyle: "italic" }}>Named, not numbered.</span></h2>
           <div className="band-row">
             {BANDS.map((b) => (
               <div key={b.tag} className={`band-cell ${b.cls}`}>
@@ -154,7 +153,7 @@ export default function LandingPage() {
             ))}
           </div>
           <p style={{ fontSize: 12.5, color: "var(--text-secondary)", marginTop: 18, maxWidth: "80ch" }}>
-            The exact percentiles are Taha&apos;s call once the v1.0 backtest computes them. The names are locked.
+            The bands are fixed by name and by approximate percentile — Quiet covers the typical day, Intense stays rare by construction. The names don&apos;t change.
           </p>
         </div>
       </section>
@@ -166,28 +165,28 @@ export default function LandingPage() {
             <div>
               <div className="layer-num">04 · What changed</div>
               <h2>The number is now read as <span style={{ color: "var(--accent)", fontStyle: "italic" }}>how much</span> is happening, not whether it&apos;s good or bad.</h2>
-              <p className="lede">The previous version of Pulse used a signed normalization — a good move raised the score, a bad move lowered it. Under that math, a holding in the middle of a crash would read Quiet, because the math averaged good-move and bad-move signals toward neutral. The product promise said the opposite. The new math reads magnitude: a move in either direction raises the score, by the same amount.</p>
-              <p className="lede">Five reversals made the new model honest. Read the laymen&apos;s summary in the <a href="/faq/" style={{ color: "var(--accent)", fontWeight: 600 }}>FAQ</a>, or the full method in the <a href="/#model" style={{ color: "var(--accent)", fontWeight: 600 }}>Model Details</a> page.</p>
+              <p className="lede">Pulse reads magnitude: a move in either direction raises the score, by the same amount. A Quiet reading means nothing is asking for your attention — not that things are fine, and not that they aren&apos;t. The bands describe how much is happening, not whether the happening is good or bad. That is the whole point of the read.</p>
+              <p className="lede">The math behind the read lives in the <a href="/#model" style={{ color: "var(--accent)", fontWeight: 600 }}>Model Details</a> page, and the plain-language version in the <a href="/faq/" style={{ color: "var(--accent)", fontWeight: 600 }}>FAQ</a>.</p>
             </div>
             <div className="vis-block">
               <div className="eyebrow"><span className="num">04.1</span> · Before &amp; after, on the same day</div>
               <h3 style={{ fontSize: "1.0625rem", marginBottom: 24 }}>NVDA · 2024-08-05 · intraday crash then reversal</h3>
               <div className="before-after">
                 <div>
-                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 700, marginBottom: 8 }}>Old model · signed</div>
+                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-secondary)", fontWeight: 700, marginBottom: 8 }}>Signed reading</div>
                   <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: "-0.04em", color: "var(--text-secondary)", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>0.21</div>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text-secondary)", marginTop: 6 }}>Quiet · read: &ldquo;nothing&apos;s happening&rdquo;</div>
                   <p style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 10, lineHeight: 1.5 }}>The high-attention scenario averaged out. A reading a trader would ignore.</p>
                 </div>
                 <div>
-                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 700, marginBottom: 8 }}>New model · intensity</div>
+                  <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 700, marginBottom: 8 }}>Magnitude reading</div>
                   <div style={{ fontSize: 48, fontWeight: 800, letterSpacing: "-0.04em", color: "var(--accent)", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>0.79</div>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginTop: 6 }}>Strong · read: &ldquo;several signals are lined up&rdquo;</div>
                   <p style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 10, lineHeight: 1.5 }}>Same conditions. The number finally says what the bands promise they say.</p>
                 </div>
               </div>
               <div style={{ marginTop: 24, paddingTop: 18, borderTop: "var(--rule)", fontSize: 12.5, color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                The other four reversals: native-frequency baselines (per-factor windows, not uniform 252d), the F6 + F16 net into one exposure-scaled FX factor, the percentile-locked band cutpoints, and a static-weight lock that is now conditional on the §3.1 measurement shipping in v1.0.
+                The before/after is the clearest way to see what the read is doing. The math, the baselines, the factor set, the band thresholds, and the asset-class mask are all on the Model Details page.
               </div>
             </div>
           </div>

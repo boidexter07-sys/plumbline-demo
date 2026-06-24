@@ -38,9 +38,12 @@ export default function PrivacyPage() {
             <div className="data-flow-tile"><strong>Yahoo Finance</strong><span>F1, F2, F3, F4 price lane · F6+16 FX proxy · F7 commodity · F15 gold · F28 VIX</span></div>
             <div className="data-flow-tile"><strong>BoC Valet API</strong><span>F5 · Bank of Canada overnight rate</span></div>
             <div className="data-flow-tile"><strong>GDELT 2.0</strong><span>F9 tone, F10 events, F11 story, F12 alignment, F30 spike</span></div>
-            <div className="data-flow-tile"><strong>Polymarket + Kalshi + PredictIt</strong><span>F29 · prediction-market sentiment overlay (5% dial)</span></div>
+            <div className="data-flow-tile"><strong>Canadian public datasets &amp; central-bank APIs</strong><span>F5 BoC rate · F13 CPI · F14 gas · F18 renewables · F19 auto · F20 GDP · F23 labour · F24 shelter · F25 trade</span></div>
+            <div className="data-flow-tile"><strong>Free tier of major US data providers</strong><span>F21 Fed funds · F22 10y-2y spread · F26 breakeven 10y · F27 HY OAS · F28 VIX</span></div>
+            <div className="data-flow-tile"><strong>Price and commodity feeds</strong><span>F1, F2, F3, F4 price lane · F6+16 FX proxy · F7 commodity · F15 gold</span></div>
+            <div className="data-flow-tile"><strong>Open news &amp; event streams</strong><span>F9 tone · F10 events · F11 story · F12 alignment · F30 spike · F29 prediction-market sentiment (5% dial)</span></div>
           </div>
-          <p style={{ marginTop: 18, fontSize: 12.5 }}><strong>Plus (backtest only):</strong> ALFRED (FRED&apos;s archival feed) — vintage data for the v1.1 backtest integrity. Not used in production.</p>
+          <p style={{ marginTop: 18, fontSize: 12.5 }}>Every source is free and public. The full source map lives on the Model Details page.</p>
 
           <h2>3. What we don&apos;t do</h2>
           <p>We don&apos;t sell your data. We don&apos;t share it with brokers, market-makers, or third-party advertisers. We don&apos;t run A/B tests that profile you across the web. We don&apos;t use Plumbline as a customer-acquisition surface for paid data products. The Service&apos;s revenue is the $4.99 monthly subscription. That is the only business model.</p>

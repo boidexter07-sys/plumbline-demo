@@ -4,28 +4,25 @@ import { MarketingPage, LockedDisclaimer } from "../../_components/MarketingChro
 export const metadata: Metadata = {
   title: "FAQ — Plumbline",
   description:
-    "Six answers to the questions readers ask most often about the 29-factor Pulse.",
+    "Five answers to the questions readers ask most often about the 29-factor Pulse.",
   alternates: { canonical: "/faq" },
   openGraph: {
     type: "website",
     url: "https://boidexter07-sys.github.io/plumbline-demo/faq/",
     title: "Plumbline — FAQ",
-    description: "Six answers to the questions readers actually ask.",
+    description: "Five answers to the questions readers actually ask.",
     images: [{ url: "/plumbline-demo/assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 
 const FAQ_ITEMS = [
   {
-    q: "What changed in the robustness revision?",
+    q: "How is Pulse built, and what does it actually measure?",
     a: (
       <>
-        <p>Five things, all Taha-confirmed 2026-06-24:</p>
-        <p><strong>The math.</strong> The old normalization was signed — a good move raised the score, a bad move lowered it. Under that math, a holding in the middle of a crash would read Quiet. The new model reads magnitude: a move in either direction raises the score, by the same amount. The five band names survive. The 0–1 range survives. The bands finally mean what the copy says they mean.</p>
-        <p><strong>The baselines.</strong> The old model used a 252-day window for every factor. A quarterly GDP print only appears four times in that window — there&apos;s not enough data to mean anything. Each factor now uses its own native-frequency history: quarterly over ten years, monthly over ten years, daily over 252 trading days.</p>
-        <p><strong>The factor set.</strong> The 30-factor build is now a 29-factor build. F6 and F16 — the reciprocal CAD/USD and USD/CAD factors — are netted into a single exposure-scaled FX factor, weighted by each holding&apos;s USD revenue exposure. The freed weight is redistributed to F1 and F2 (the price lane).</p>
-        <p><strong>The cutpoints.</strong> The numeric cutpoints between bands no longer live at 0.20 / 0.40 / 0.60 / 0.80. They are now derived from the empirical distribution of the composite across the universe and locked as percentiles. The names don&apos;t change. The default target shape is roughly: Quiet below 50th, Light 50th–75th, Active 75th–90th, Strong 90th–98th, Intense top 2%.</p>
-        <p><strong>The asset-class mask.</strong> Crypto doesn&apos;t read Canadian-domestic macro. The mask is explicit: a token gets 20 factors, not 29. Equities get the full set. Commodities get most of it. The mask is honest about what the model is doing.</p>
+        <p>Pulse is a single number between zero and one, rebuilt once a day at 14:00 ET. It blends twenty-nine measurable inputs — price, macro, FX, news, and prediction-market sentiment — into one read on <em>how much is happening</em> around each holding you own. The number is a magnitude, not a direction: a move in either direction raises the score by the same amount. The five bands — Quiet, Light, Active, Strong, Intense — describe intensity of conditions, not whether conditions are good or bad.</p>
+        <p>Twelve of the 29 factors are price-and-macro signals you&apos;ve heard of. Seventeen are the things that quietly shape every position in your book whether you&apos;re watching them or not — Bank of Canada policy, Canadian headline inflation, gold as a risk-off hedge, the credit spread, the VIX. If a factor doesn&apos;t apply to a holding (crypto doesn&apos;t read Canadian-domestic macro, for example), the model masks it. Today&apos;s reading might rest on 27 of 29 factors; the model shows you which factors are live.</p>
+        <p>The full factor table, weights, and equations live on the Model Details page. Nothing is hidden behind a settings toggle.</p>
       </>
     ),
   },
@@ -55,19 +52,10 @@ const FAQ_ITEMS = [
     ),
   },
   {
-    q: "Why did the cutpoints change from 0.20 / 0.40 / 0.60 / 0.80 to percentiles?",
-    a: (
-      <>
-        <p>The old 0.20-step cutpoints assumed an evenly distributed composite. Under the new intensity math, the composite&apos;s resting distribution shifts upward — a typical day for a typical holding is now around 0.45, not 0.50. Fixed cutpoints at 0.20 / 0.40 / 0.60 / 0.80 would make &ldquo;Intense is rare&rdquo; stop being true. Locking the cutpoints to the empirical percentiles preserves the rarity the band names promise.</p>
-        <p>The exact percentiles are Taha&apos;s call once the v1.0 backtest computes them. The five band names don&apos;t change. The 0–1 range doesn&apos;t change.</p>
-      </>
-    ),
-  },
-  {
     q: "What does the asset-class mask do?",
     a: (
       <>
-        <p>It stops the model from applying factors that don&apos;t transmit to the holding. Canadian-domestic macro factors (F13 CPI, F14 gas, F18 renewables, F19 auto sales, F20 GDP per capita, F23 labour, F24 shelter, F25 trade balance) don&apos;t carry a signal to a Bitcoin holding. Under the old model, the macro lane would have inflated crypto&apos;s reading with factors that don&apos;t apply. The mask turns those factors off for crypto. Equities get the full 29. Commodities get 27 (F1 and F2 dialed down because there&apos;s no sector-peers line for crude).</p>
+        <p>It stops the model from applying factors that don&apos;t transmit to the holding. Canadian-domestic macro factors (F13 CPI, F14 gas, F18 renewables, F19 auto sales, F20 GDP per capita, F23 labour, F24 shelter, F25 trade balance) don&apos;t carry a signal to a Bitcoin holding. Under a uniform-factor model, the macro lane would have inflated crypto&apos;s reading with factors that don&apos;t apply. The mask turns those factors off for crypto. Equities get the full 29. Commodities get 27 (F1 and F2 dialed down because there&apos;s no sector-peers line for crude).</p>
         <p>The factors that do apply carry more weight within the smaller set. The reading is more honest for a token, not less.</p>
       </>
     ),
@@ -75,7 +63,7 @@ const FAQ_ITEMS = [
   {
     q: "Why is the price $4.99 CAD per month?",
     a: (
-      <p>Because the data costs us $0/month. Every source Pulse reads is free and public — Yahoo Finance, Statistics Canada, the Federal Reserve&apos;s FRED, GDELT, Polymarket, Kalshi, PredictIt, the BoC Valet API. The only net-new infrastructure cost in v1.0 is the ALFRED archival feed (also free, FRED-adjacent) for the v1.1 backtest. There is no margin pressure on the data side, so the price is what it is. The 7-day free trial has no card on file. Cancel anytime in two clicks.</p>
+      <p>Because the data costs us $0/month. Every source Pulse reads is free and public — Canadian public datasets, central-bank APIs, the free tier of major US data providers, and a few well-known open news and prediction-market feeds. There is no margin pressure on the data side, so the price is what it is. The 7-day free trial has no card on file. Cancel anytime in two clicks.</p>
     ),
   },
 ];
@@ -86,8 +74,8 @@ export default function FAQPage() {
       <section style={{ padding: "96px 20px 48px" }}>
         <div className="container" style={{ maxWidth: 760 }}>
           <div className="eyebrow"><span className="num">$</span> · The 29-factor Pulse · explained</div>
-          <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", maxWidth: "18ch" }}>Six answers to the questions <span className="em">readers actually ask.</span></h1>
-          <p className="lede">What changed in the robustness revision, what the 29 factors are, why five bands, how the cutpoints work, what the asset-class mask does, and why the price is $4.99.</p>
+          <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", maxWidth: "18ch" }}>Five answers to the questions <span className="em">readers actually ask.</span></h1>
+          <p className="lede">How Pulse is built, what the 29 factors are, why five bands, what the asset-class mask does, and why the price is $4.99.</p>
         </div>
       </section>
 
