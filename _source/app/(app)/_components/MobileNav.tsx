@@ -47,6 +47,17 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
+  // Lock body scroll while the panel is open so the underlying page can't
+  // scroll behind the menu. Restore on close/unmount.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   // Close panel on route change.
   useEffect(() => {
     if (open) onClose();
@@ -68,7 +79,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
     <div className="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation">
       <button
         type="button"
-        className="mobile-nav-overlay"
+        className="mobile-nav-backdrop"
         aria-label="Close navigation"
         onClick={onClose}
       />
