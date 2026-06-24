@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { SignInButton } from "@clerk/nextjs";
 
 /* =========================================================================
-   StartTrialButton — Phase 1.1 wiring for "Start 7-day free trial".
+   StartTrialButton — Phase 1.2 wiring for "Start 7-day free trial".
 
    Behaviour:
    - When NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY is set (Phase 2+), renders
@@ -12,15 +13,32 @@ import { SignInButton } from "@clerk/nextjs";
      (no social providers, no payment). Decision 37 + Decision 38.
    - When Clerk env is absent (Phase 1, GitHub Pages static export),
      renders an inline expanding email form as a Phase 1 placeholder.
-     Submission POSTs to /api/auth-stub which returns 200 + a
-     "trial activated" acknowledgement.
+     Phase 1.2: on submit, the user is given INSTANT ACCESS. We:
+       1. generate a local UUID for this user
+       2. save { userId, email, createdAt } to localStorage under
+          `plumbline_session`
+       3. mirror the userId to a `plumbline_session` cookie (30d) so
+          any future SSR or Phase 2 backend can pick it up
+       4. router.push("/holdings/") — no verification, no backend call
+     StaticGate checks localStorage on mount and lets the user through.
 
    Why a single component: the three landing/pricing CTAs and the nav
    CTA all share the same legal copy and same wiring. Keeping it in one
    file means "fix it once, ship once."
+
+   Phase 2 reconciliation note:
+   The local userId written here is the only identifier until Clerk is
+   wired in. When Phase 2 provisions Clerk keys, read the session out of
+   localStorage (key: `plumbline_session`) and reconcile the
+   pre-Clerk userId with Clerk's userId. See StaticGate.tsx for the
+   matching reconciliation comment.
    ========================================================================= */
 
 const HAS_CLERK = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+const SESSION_KEY = "plumbline_session";
+const COOKIE_NAME = "plumbline_session";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
 type Variant = "primary" | "nav" | "cta-band";
 
@@ -79,10 +97,11 @@ function ClerkTrialButton({ variant, children, style, className }: Props) {
 function StaticTrialButton({ variant, children, style, className }: Props) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "ok" | "error">("idle");
-  const [message, setMessage] = useState<string>("");
+  const [status, setStatus] = useState<"idle" | "submitting">("idle");
+  const [error, setError] = useState<string>("");
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
+  const router = useRouter();
 
   const mergedStyle = { ...variantStyle[variant ?? "primary"], ...style };
   const mergedClass = `${className ?? ""} ${variantClass[variant ?? "primary"]}`.trim();
@@ -108,47 +127,40 @@ function StaticTrialButton({ variant, children, style, className }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email) return;
-    setStatus("submitting");
-    setMessage("");
-
-    // Static export on GitHub Pages: /api/auth-stub won't exist at runtime.
-    // We optimistically show "trial activated" locally — this is the Phase 1
-    // placeholder per Decision 37/38. When Phase 2 wires Clerk in (and the
-    // API route becomes live), the real round-trip below takes over.
-    const isStaticExport = !HAS_CLERK;
-
-    if (isStaticExport) {
-      // Brief delay so the UI shows the "sending" state.
-      await new Promise((r) => setTimeout(r, 350));
-      setStatus("ok");
-      setMessage(
-        "Trial placeholder activated. We sent a magic link to " +
-          email +
-          ". (Phase 1 static build — real delivery ships with Phase 2.)"
-      );
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setError("Please enter your email.");
       return;
     }
+    setStatus("submitting");
+    setError("");
+
+    // Phase 1.2: instant access. No backend round-trip, no verification.
+    // Generate a stable per-browser userId, persist it locally and in a
+    // cookie, then route straight into the app. StaticGate watches the
+    // same localStorage key on mount and lets the user through.
+    const userId =
+      typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `pl-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 
     try {
-      const res = await fetch("/api/auth-stub", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) {
-        const body = await res.text();
-        throw new Error(body || `HTTP ${res.status}`);
-      }
-      const data = (await res.json()) as { status?: string; message?: string };
-      setStatus("ok");
-      setMessage(data.message ?? "Trial activated. Check your inbox for the magic link.");
-    } catch (err) {
-      setStatus("error");
-      setMessage(err instanceof Error ? err.message : "Something went wrong.");
+      window.localStorage.setItem(
+        SESSION_KEY,
+        JSON.stringify({ userId, email: trimmed, createdAt: Date.now() })
+      );
+    } catch {
+      // localStorage may be unavailable (private mode, etc.). We still
+      // route the user — the cookie alone is enough to carry the session.
     }
+
+    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(
+      userId
+    )}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+
+    router.push("/holdings/");
   }
 
   function onTrigger(e: MouseEvent<HTMLButtonElement>) {
@@ -220,81 +232,65 @@ function StaticTrialButton({ variant, children, style, className }: Props) {
               Start your 7-day free trial.
             </h2>
             <p style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 20, lineHeight: 1.5 }}>
-              Enter your email. We&apos;ll send you a magic link — no password, no card on file. When Clerk
+              Enter your email to unlock the app. No password, no card on file — when Clerk
               is wired in Phase 2, this opens the real Clerk sign-in modal automatically.
             </p>
 
-            {status === "ok" ? (
-              <div
-                role="status"
+            <form onSubmit={onSubmit} noValidate>
+              <label
+                htmlFor="start-trial-email"
                 style={{
-                  padding: "14px 16px",
-                  background: "var(--bg-muted)",
-                  border: "1px solid var(--status-pos)",
-                  color: "var(--text-primary)",
-                  fontSize: 14,
-                  marginBottom: 12,
+                  display: "block",
+                  fontSize: 11.5,
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "var(--text-secondary)",
+                  fontWeight: 700,
+                  marginBottom: 6,
                 }}
               >
-                {message}
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate>
-                <label
-                  htmlFor="start-trial-email"
-                  style={{
-                    display: "block",
-                    fontSize: 11.5,
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                    color: "var(--text-secondary)",
-                    fontWeight: 700,
-                    marginBottom: 6,
-                  }}
+                Email address
+              </label>
+              <input
+                ref={emailRef}
+                id="start-trial-email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                inputMode="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "submitting"}
+                placeholder="you@example.com"
+                style={{
+                  width: "100%",
+                  padding: "12px 14px",
+                  fontSize: 15,
+                  border: "1px solid var(--border-subtle)",
+                  background: "var(--bg-base)",
+                  color: "var(--text-primary)",
+                  marginBottom: 14,
+                  fontFamily: "inherit",
+                }}
+              />
+              <button
+                type="submit"
+                className="btn-primary"
+                disabled={status === "submitting"}
+                style={{ width: "100%", padding: "12px 16px", fontSize: 14 }}
+              >
+                {status === "submitting" ? "Opening the app…" : "Start trial"}
+              </button>
+              {error && (
+                <p
+                  role="alert"
+                  style={{ color: "var(--accent)", fontSize: 13, marginTop: 10 }}
                 >
-                  Email address
-                </label>
-                <input
-                  ref={emailRef}
-                  id="start-trial-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  inputMode="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={status === "submitting"}
-                  placeholder="you@example.com"
-                  style={{
-                    width: "100%",
-                    padding: "12px 14px",
-                    fontSize: 15,
-                    border: "1px solid var(--border-subtle)",
-                    background: "var(--bg-base)",
-                    color: "var(--text-primary)",
-                    marginBottom: 14,
-                    fontFamily: "inherit",
-                  }}
-                />
-                <button
-                  type="submit"
-                  className="btn-primary"
-                  disabled={status === "submitting"}
-                  style={{ width: "100%", padding: "12px 16px", fontSize: 14 }}
-                >
-                  {status === "submitting" ? "Sending magic link…" : "Email me a magic link"}
-                </button>
-                {status === "error" && (
-                  <p
-                    role="alert"
-                    style={{ color: "var(--accent)", fontSize: 13, marginTop: 10 }}
-                  >
-                    {message}
-                  </p>
-                )}
-              </form>
-            )}
+                  {error}
+                </p>
+              )}
+            </form>
 
             <button
               type="button"
