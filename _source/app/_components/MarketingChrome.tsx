@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { StartTrialButton } from "./StartTrialButton";
 
 /* =========================================================================
    Plumbline brand mark — the asterisk plumb-line (4 directions, optional)
@@ -71,9 +72,9 @@ export function Nav({ currentPath = "" }: { currentPath?: string }) {
         </div>
         <span className="nav-spacer" style={{ flex: 1 }} />
         <div className="nav-cta">
-          <Link href="/pricing/" className="btn-primary">
+          <StartTrialButton variant="nav">
             Start 7-day free trial <span aria-hidden="true">→</span>
-          </Link>
+          </StartTrialButton>
         </div>
         <button
           className="nav-toggle"

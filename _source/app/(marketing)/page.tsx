@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketingPage, LockedDisclaimer } from "../_components/MarketingChrome";
+import { StartTrialButton } from "../_components/StartTrialButton";
 
 export const metadata: Metadata = {
   title: "Plumbline — A driver's-seat view of your investments.",
@@ -39,7 +40,7 @@ export default function LandingPage() {
             <h1>A driver&apos;s-seat view of your investments.</h1>
             <p className="lede">Plumbline is calm guidance for noisy markets — a dashboard, a daily brief, and a single number called Pulse that tells you how conditions are shifting. Not what to do. Just what is happening.</p>
             <div className="hero-actions">
-              <a className="btn-primary" href="/pricing/">Start 7-day free trial</a>
+              <StartTrialButton variant="primary">Start 7-day free trial</StartTrialButton>
               <a className="btn-ghost" href="/#method">How the new Pulse is built →</a>
             </div>
             <div style={{ marginTop: 18, fontSize: 13, color: "var(--text-secondary)", display: "flex", gap: 18, flexWrap: "wrap" }}>
@@ -265,7 +266,7 @@ export default function LandingPage() {
           <div className="eyebrow" style={{ color: "var(--accent-soft)" }}><span className="num" style={{ color: "var(--bg-base)" }}>$</span> · $4.99 CAD · monthly</div>
           <h2 style={{ color: "var(--text-on-deep)", maxWidth: "20ch", margin: "0 auto 18px" }}>One subscription. <span style={{ color: "var(--accent-soft)" }}>$4.99</span> per month, after a 7-day free trial.</h2>
           <p style={{ color: "var(--text-on-deep-dim)", maxWidth: "50ch", margin: "0 auto 32px", fontSize: "1.0625rem" }}>Cancel anytime — no questions, no retention call, no dark patterns. The data costs us $0/month because every source is free and public. The price is what it is.</p>
-          <a className="btn-primary" href="/pricing/" style={{ background: "var(--accent)", color: "var(--bg-deep)", borderColor: "var(--accent)", fontSize: 15, padding: "14px 28px" }}>Start 7-day free trial</a>
+          <StartTrialButton variant="cta-band">Start 7-day free trial</StartTrialButton>
           <div style={{ fontSize: 12, color: "var(--text-on-deep-dim)", marginTop: 18, letterSpacing: "0.04em" }}>14-day money-back guarantee · Cancel from your account page · No card-on-file for the trial</div>
         </div>
       </section>

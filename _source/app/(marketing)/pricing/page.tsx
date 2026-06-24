@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MarketingPage, LockedDisclaimer } from "../../_components/MarketingChrome";
+import { StartTrialButton } from "../../_components/StartTrialButton";
 
 export const metadata: Metadata = {
   title: "Pricing — Plumbline",
@@ -40,7 +41,12 @@ export default function PricingPage() {
                 Billed monthly after a 7-day free trial. Cancel from your account page in two clicks. 14-day money-back guarantee on first charge.
               </p>
             </div>
-            <a className="btn-primary" href="#" style={{ fontSize: 15, padding: "14px 28px", justifyContent: "center" }}>Start 7-day free trial</a>
+            <StartTrialButton
+              variant="primary"
+              style={{ fontSize: 15, padding: "14px 28px", justifyContent: "center" }}
+            >
+              Start 7-day free trial
+            </StartTrialButton>
           </div>
           <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1fr", gap: 14 }}>
             <div style={{ padding: "18px 20px", background: "var(--bg-muted)", fontSize: 13 }}>
