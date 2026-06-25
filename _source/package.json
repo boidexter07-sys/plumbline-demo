@@ -9,6 +9,7 @@
     "lint": "next lint",
     "smoke": "bash scripts/smoke-test.sh",
     "test:unit": "vitest run lib/pulse/__tests__",
+    "data-snapshot": "tsx scripts/data-snapshot.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5",
+    "tsx": "^4.19.2",
     "vitest": "^2.1.8"
   }
 }
