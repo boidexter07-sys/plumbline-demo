@@ -10,6 +10,7 @@
     "smoke": "bash scripts/smoke-test.sh",
     "test:unit": "vitest run lib/pulse/__tests__",
     "data-snapshot": "tsx scripts/data-snapshot.ts",
+    "parity-check": "tsx scripts/parity-check.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
